@@ -1,0 +1,6 @@
+<h1>{{ ticker.name }}</h1>
+<ul>
+{% for info in ticker_info %}
+    <li><a href="{% url 'call_detail' ticker.name info.year info.quarter %}">{{ info.year }} Q{{ info.quarter }}</a></li>
+{% endfor %}
+</ul>

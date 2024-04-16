@@ -1,7 +1,8 @@
 from django.urls import path
-from confai.views import TickerView
+from confai import views
 
 urlpatterns = [
-    path('ticker/<str:ticker>/', TickerView.as_view(), name='ticker'),
-    path('ticker/<str:ticker>/<int:year>/<int:quarter>/', TickerView.as_view(), name='ticker_year_quarter'),
+    path('', views.ticker_list, name='ticker_list'),
+    path('ticker/<str:ticker_name>/', views.ticker_detail, name='ticker_detail'),
+    path('ticker/<str:ticker_name>/<int:year>/<int:quarter>/', views.call_detail, name='call_detail'),
 ]

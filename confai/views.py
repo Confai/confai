@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from confai.models import Ticker, ConferenceCall, TickerInfo
+from django.shortcuts import render
 
 
 class TickerView(APIView):
@@ -38,3 +39,17 @@ class TickerView(APIView):
         ticker_info = list(ticker_info_objs.values())  # Convert the QuerySet to a list of dictionaries
 
         return Response({'calls': results, 'ticker_info': ticker_info})
+def ticker_list(request):
+    tickers = Ticker.objects.all()
+    return render(request, 'ticker_list.html', {'tickers': tickers})
+
+def ticker_detail(request, ticker_name):
+    ticker = Ticker.objects.get(name=ticker_name)
+    ticker_info = TickerInfo.objects.filter(ticker=ticker)
+    return render(request, 'ticker_detail.html', {'ticker': ticker, 'ticker_info': ticker_info})
+
+def call_detail(request, ticker_name, year, quarter):
+    ticker = Ticker.objects.get(name=ticker_name)
+    ticker_info = TickerInfo.objects.get(ticker=ticker, year=year, quarter=quarter)
+    call = ConferenceCall.objects.get(ticker=ticker_info)
+    return render(request, 'call_detail.html', {'call': call})

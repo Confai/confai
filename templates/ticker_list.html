@@ -1,0 +1,6 @@
+<h1>Tickers</h1>
+<ul>
+{% for ticker in tickers %}
+    <li><a href="{% url 'ticker_detail' ticker.name %}">{{ ticker.name }}</a></li>
+{% endfor %}
+</ul>
