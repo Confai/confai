@@ -32,7 +32,7 @@ class Command(BaseCommand):
                 summarizer = DocumentSummarizer(call_text)
                 summary = summarizer.docsummarize()
 
-                # Get or create the ConferenceCall instance and store the sentiment analysis results
+# Get or create the ConferenceCall instance and store the sentiment analysis results
                 call, created = ConferenceCall.objects.get_or_create(
                     ticker=ticker,
                     year=year,
@@ -40,7 +40,10 @@ class Command(BaseCommand):
                     defaults={
                         'full_text': call_text,
                         'average_scores': average_scores,
-                        'extreme_sentences': [highest_negative, highest_positive],
+                        'extreme_sentences': {
+                            'negative': highest_negative,
+                            'positive': highest_positive,
+                        },
                         'overall_sentiment': overall_sentiment,
                         'summary': summary,
                     }

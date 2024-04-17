@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ ticker.name }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -16,14 +17,18 @@
                         <h2 class="card-title">Latest Call</h2>
                     </div>
                     <div class="card-body">
-                        <p>Year: {{ latest_call.year }}</p>
-                        <p>Quarter: {{ latest_call.quarter }}</p>
+                        <h3>Sentiment Analysis</h3>
                         <p>Average Scores: {{ latest_call.average_scores }}</p>
-                        <p>Extreme Sentences: {{ latest_call.extreme_sentences }}</p>
-                        <p>Overall Sentiment: {{ latest_call.overall_sentiment }}</p>
-                        <p>Summary: {{ latest_call.summary }}</p>
+                        <p>Extreme Sentences:</p>
+                        <ul>
+                            <li style="color: red;">Negative: {{ latest_call.extreme_sentences.negative }}</li>
+                            <li style="color: green;">Positive: {{ latest_call.extreme_sentences.positive }}</li>
+                        </ul>
+                        <p>Overall Score: {{ latest_call.overall_sentiment }}</p>
+                        <h3>Summary</h3>
+                        <p>{{ latest_call.summary }}</p>
                         <details>
-                            <summary>Full Text</summary>
+                            <summary>Click to see Full Text</summary>
                             <p>{{ latest_call.full_text }}</p>
                         </details>
                     </div>
@@ -32,15 +37,20 @@
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-header">
+                        <h2 class="card-title">Stock Chart</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="stockChartDiv">{{ stock_chart|safe }}</div>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
                         <h2 class="card-title">Indicators</h2>
                     </div>
                     <div class="card-body">
-                        <select id="plotSelect" onchange="changePlot()">
-                            {% for key, plot in plots.items %}
-                                <option value="{{ plot }}">{{ key }}</option>
-                            {% endfor %}
-                        </select>
-                        <img id="plotImage" src="{{ plots_values|first }}" alt="Plot" class="img-fluid">
+                        {% for plot in plots %}
+                            <div>{{ plot|safe }}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -52,8 +62,8 @@
     <script>
         function changePlot() {
             var select = document.getElementById("plotSelect");
-            var image = document.getElementById("plotImage");
-            image.src = select.value;
+            var div = document.getElementById("plotDiv");
+            div.innerHTML = select.value;
         }
     </script>
 </body>

@@ -83,8 +83,8 @@ class SentimentAnalyzer:
         return {
             'average_scores': avg_scores,
             'extreme_sentences': {
-                'negative': [sent for score, sent in extreme_sentences[0]],
-                'positive': [sent for score, sent in extreme_sentences[1]],
+                'negative': extreme_sentences[0],
+                'positive': extreme_sentences[1],
             },
             'overall_score': overall_score,
         }

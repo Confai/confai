@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from confai.models import Ticker, ConferenceCall
 from django.shortcuts import render
 from confai.five_indicators import StockAnalyzer
-from confai.plotter import plot_data
+from confai.plotter import plot_data, generate_stock_chart
 from django.shortcuts import get_object_or_404
 
 
@@ -47,16 +47,16 @@ def ticker_detail(request, ticker_name):
     ticker = get_object_or_404(Ticker, name=ticker_name)
     latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('year', 'quarter')
 
-    analyzer = StockAnalyzer(ticker_name, '2007-01-01')  # Replace '2007-01-01' with the actual start date
-    indicator_data = analyzer.get_all()
+    print(type(latest_call.average_scores))
+    print(latest_call.extreme_sentences)
+
+    analyzer = StockAnalyzer(ticker.name, '2007-01-01')  # Replace '2007-01-01' with the actual start date
+    indicator_data = analyzer.get_all() # Get all the indicator data
+
     plots = plot_data(indicator_data)
+    stock_chart = generate_stock_chart(ticker.name)  # Generate the stock chart
 
-    plots_values = list(plots.values())
-
-    # Get the latest ConferenceCall for the selected Ticker
-    latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('year', 'quarter')
-
-    return render(request, 'ticker_detail.html', {'ticker': ticker, 'plots': plots, 'plots_values': plots_values, 'latest_call': latest_call})
+    return render(request, 'ticker_detail.html', {'ticker': ticker, 'latest_call': latest_call, 'plots': plots, 'stock_chart': stock_chart})
 
 def call_detail(request, ticker_name, year, quarter):
     ticker = Ticker.objects.get(name=ticker_name)

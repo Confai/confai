@@ -32,6 +32,9 @@
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d5471ccb-b649-49cb-84f0-d475624feb67" dataset="main.confai_ticker" active-filter-id="" />
   </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
