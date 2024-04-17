@@ -1,6 +1,50 @@
-<h1>{{ ticker.name }}</h1>
-<ul>
-{% for info in ticker_info %}
-    <li><a href="{% url 'call_detail' ticker.name info.year info.quarter %}">{{ info.year }} Q{{ info.quarter }}</a></li>
-{% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ ticker.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">{{ ticker.name }}</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="card-title">Latest Call</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Year: {{ latest_call.year }}</p>
+                        <p>Quarter: {{ latest_call.quarter }}</p>
+                        <p>Average Scores: {{ latest_call.average_scores }}</p>
+                        <p>Extreme Sentences: {{ latest_call.extreme_sentences }}</p>
+                        <p>Overall Sentiment: {{ latest_call.overall_sentiment }}</p>
+                        <p>Summary: {{ latest_call.summary }}</p>
+                        <details>
+                            <summary>Full Text</summary>
+                            <p>{{ latest_call.full_text }}</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {% for key, plot in plots.items|slice:"5:" %}
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h2 class="card-title">{{ key }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <img src="{{ plot }}" alt="{{ key }}" class="img-fluid">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

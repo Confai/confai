@@ -1,6 +1,6 @@
 import os
 from django.core.management.base import BaseCommand
-from confai.models import Ticker, ConferenceCall, TickerInfo
+from confai.models import Ticker, ConferenceCall
 from confai.sentiment import SentimentAnalyzer
 from confai.summary import DocumentSummarizer
 from django.conf import settings
@@ -12,7 +12,7 @@ class Command(BaseCommand):
         directory = os.path.join(settings.BASE_DIR, 'calls')
         for filename in os.listdir(directory):
             if filename.endswith(".txt"):  # Ensure we're working with .txt files
-                with open(os.path.join(directory, filename), 'r') as file:
+                with open(os.path.join(directory, filename), 'r', encoding='utf-8') as file:
                     call_text = file.read()
 
                 # The ticker name, year and quarter are in the filename
@@ -22,14 +22,6 @@ class Command(BaseCommand):
 
                 # Get or create the Ticker instance
                 ticker, created = Ticker.objects.get_or_create(name=ticker_name)
-
-                # Get or create the TickerInfo instance
-                ticker_info, created = TickerInfo.objects.get_or_create(
-                    ticker=ticker,
-                    year=year,
-                    quarter=quarter,
-                    # Add any additional fields here
-                )
 
                 # Analyze the call text
                 analyzer = SentimentAnalyzer(call_text)
@@ -42,7 +34,9 @@ class Command(BaseCommand):
 
                 # Get or create the ConferenceCall instance and store the sentiment analysis results
                 call, created = ConferenceCall.objects.get_or_create(
-                    ticker=ticker_info,
+                    ticker=ticker,
+                    year=year,
+                    quarter=quarter,
                     defaults={
                         'full_text': call_text,
                         'average_scores': average_scores,
