@@ -30,21 +30,31 @@
                 </div>
             </div>
             <div class="col-md-6">
-                {% for key, plot in plots.items|slice:"5:" %}
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h2 class="card-title">{{ key }}</h2>
-                        </div>
-                        <div class="card-body">
-                            <img src="{{ plot }}" alt="{{ key }}" class="img-fluid">
-                        </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="card-title">Indicators</h2>
                     </div>
-                {% endfor %}
+                    <div class="card-body">
+                        <select id="plotSelect" onchange="changePlot()">
+                            {% for key, plot in plots.items %}
+                                <option value="{{ plot }}">{{ key }}</option>
+                            {% endfor %}
+                        </select>
+                        <img id="plotImage" src="{{ plots_values|first }}" alt="Plot" class="img-fluid">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function changePlot() {
+            var select = document.getElementById("plotSelect");
+            var image = document.getElementById("plotImage");
+            image.src = select.value;
+        }
+    </script>
 </body>
 </html>

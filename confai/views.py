@@ -3,9 +3,9 @@ from rest_framework.response import Response
 from confai.models import Ticker, ConferenceCall
 from django.shortcuts import render
 from confai.five_indicators import StockAnalyzer
-import matplotlib.pyplot as plt
-import io
-import base64
+from confai.plotter import plot_data
+from django.shortcuts import get_object_or_404
+
 
 class TickerView(APIView):
     def get(self, request, ticker, year=None, quarter=None):
@@ -44,28 +44,19 @@ def ticker_list(request):
     return render(request, 'ticker_list.html', {'tickers': tickers})
 
 def ticker_detail(request, ticker_name):
-    ticker = Ticker.objects.get(name=ticker_name)
+    ticker = get_object_or_404(Ticker, name=ticker_name)
+    latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('year', 'quarter')
 
     analyzer = StockAnalyzer(ticker_name, '2007-01-01')  # Replace '2007-01-01' with the actual start date
     indicator_data = analyzer.get_all()
+    plots = plot_data(indicator_data)
 
-    # Generate plots for each dataset and convert them to base64
-    plots = {}
-    for key, data in indicator_data.items():
-        fig, ax = plt.subplots()
-        data.plot(ax=ax)
-        plt.title(key)
-        figfile = io.BytesIO()
-        plt.savefig(figfile, format='png')
-        figfile.seek(0)  # rewind to beginning of file
-        figdata_png = base64.b64encode(figfile.getvalue()).decode('utf8')
-        plots[key] = "data:image/png;base64," + figdata_png
-        plt.close(fig)
+    plots_values = list(plots.values())
 
     # Get the latest ConferenceCall for the selected Ticker
     latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('year', 'quarter')
 
-    return render(request, 'ticker_detail.html', {'ticker': ticker, 'plots': plots, 'latest_call': latest_call})
+    return render(request, 'ticker_detail.html', {'ticker': ticker, 'plots': plots, 'plots_values': plots_values, 'latest_call': latest_call})
 
 def call_detail(request, ticker_name, year, quarter):
     ticker = Ticker.objects.get(name=ticker_name)

@@ -37,6 +37,13 @@ class StockAnalyzer:
         df = self.data
         df['OBV'] = ta.OBV(df['Adj Close'], df['Volume'])/10**6
         return df['OBV']
+    def big_three(self):
+        df = self.data
+        df['SMA_20'] = df['Adj Close'].rolling(20).mean()
+        df['SMA_40'] = df['Adj Close'].rolling(40).mean()
+        df['SMA_80'] = df['Adj Close'].rolling(80).mean()
+
+        return df
 
     def get_all(self):
         self.get_data()
@@ -46,4 +53,5 @@ class StockAnalyzer:
             'macd': self.get_macd(),
             'rsi': self.get_rsi(),
             'obv': self.get_obv(),
+            'big_three': self.big_three(),
         }
