@@ -14,8 +14,8 @@ class StockAnalyzer:
 
     def get_adj_close_ema_sma(self):
         df = self.data
-        df['SMA'] = ta.SMA(df['Adj Close'], timeperiod = 20)
-        df['EMA'] = ta.EMA(df['Adj Close'], timeperiod = 20)
+        df['SMA'] = ta.SMA(df['Adj Close'].values, timeperiod = 20)
+        df['EMA'] = ta.EMA(df['Adj Close'].values, timeperiod = 20)
         return df[['Adj Close', 'SMA', 'EMA']]
 
     def get_bollinger_bands(self):
@@ -37,13 +37,14 @@ class StockAnalyzer:
         df = self.data
         df['OBV'] = ta.OBV(df['Adj Close'], df['Volume'])/10**6
         return df['OBV']
+
     def big_three(self):
         df = self.data
         df['SMA_20'] = df['Adj Close'].rolling(20).mean()
         df['SMA_40'] = df['Adj Close'].rolling(40).mean()
         df['SMA_80'] = df['Adj Close'].rolling(80).mean()
 
-        return df
+        return df[['Adj Close', 'SMA_20', 'SMA_40', 'SMA_80']]
 
     def get_all(self):
         self.get_data()

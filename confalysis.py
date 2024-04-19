@@ -1,4 +1,4 @@
-from confai import sentiment, summary
+from confai.stanalysis import sentiment, summary
 import os
 def read_file():
     while True:

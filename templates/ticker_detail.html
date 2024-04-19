@@ -21,8 +21,20 @@
                         <p>Average Scores: {{ latest_call.average_scores }}</p>
                         <p>Extreme Sentences:</p>
                         <ul>
-                            <li style="color: red;">Negative: {{ latest_call.extreme_sentences.negative }}</li>
-                            <li style="color: green;">Positive: {{ latest_call.extreme_sentences.positive }}</li>
+                            <li style="color: red;">Negative:
+                                <ul>
+                                    {% for score, sentence in latest_call.extreme_sentences.0 %}
+                                        <li>Score: {{ score }}, Sentence: {{ sentence }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li style="color: green;">Positive:
+                                <ul>
+                                    {% for score, sentence in latest_call.extreme_sentences.1 %}
+                                        <li>Score: {{ score }}, Sentence: {{ sentence }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
                         </ul>
                         <p>Overall Score: {{ latest_call.overall_sentiment }}</p>
                         <h3>Summary</h3>

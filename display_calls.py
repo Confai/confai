@@ -1,55 +1,28 @@
 import django
+
 django.setup()
 
-from confai.models import Ticker, ConferenceCall
+from confai.models import Ticker
+from confai.models import ConferenceCall
 
-def get_all_calls():
+def display_calls_by_ticker(ticker_symbol):
+    ticker = Ticker.objects.get(symbol=ticker_symbol)
+    calls = ConferenceCall.objects.filter(ticker=ticker)
+
+    for call in calls:
+        if call.year and call.quarter and call.summary and call.average_scores and call.extreme_sentences and call.overall_sentiment and call.weighted_average_sentiment:
+            print(f"Year: {call.year}, Quarter: {call.quarter}, \n Summary: {call.summary}, \n Average Scores: {call.average_scores}, Extreme Sentences: {call.extreme_sentences}, Overall Sentiment: {call.overall_sentiment}, Weighted Average Sentiment: {call.weighted_average_sentiment}")
+        else:
+            print(f"Call information for Year: {call.year}, Quarter: {call.quarter} is incomplete.")
+
+def display_tickers():
     tickers = Ticker.objects.all()
     for ticker in tickers:
-        calls = ConferenceCall.objects.filter(ticker=ticker)
-        for call in calls:
-            print(f"Ticker: {ticker.name}")
-            print(f"Year: {call.year}")
-            print(f"Quarter: {call.quarter}")
-            print(f"Average scores: {call.average_scores}")
-            print("Negative Extreme Sentences:")
-            for sentence in call.extreme_sentences['negative']:
-                print(f"Score: {sentence[0]}, Sentence: {sentence[1]}")
-            print("Positive Extreme Sentences:")
-            for sentence in call.extreme_sentences['positive']:
-                print(f"Score: {sentence[0]}, Sentence: {sentence[1]}")
-            print(f"Overall sentiment: {call.overall_sentiment}")
-            print(f"Summary: {call.summary}")
-            print("\n")
+        print(f"Symbol: {ticker.symbol}, Name: {ticker.name}, Country: {ticker.country}, Sector: {ticker.sector}, Industry: {ticker.industry}")
 
-def get_conference_call_info():
-    ticker_name = input("Enter a ticker name: ")
-    year = int(input("Enter a year: "))
-    quarter = int(input("Enter a quarter: "))
 
-    try:
-        ticker = Ticker.objects.get(name=ticker_name)
-        calls = ConferenceCall.objects.filter(ticker=ticker, year=year, quarter=quarter)
+tickers = Ticker.objects.all()
 
-        for call in calls:
-            print(f"Ticker: {ticker.name}")
-            print(f"Year: {call.year}")
-            print(f"Quarter: {call.quarter}")
-
-            print(f"Average scores: {call.average_scores}")
-
-            negative_sentences = [(score, sentence) for score, sentence in call.extreme_sentences[0]]
-            positive_sentences = [(score, sentence) for score, sentence in call.extreme_sentences[1]]
-            print("Negative Extreme Sentences:")
-            for score, sentence in negative_sentences:
-                print(f"Score: {score}, Sentence: {sentence}")
-
-            print("Positive Extreme Sentences:")
-            for score, sentence in positive_sentences:
-                print(f"Score: {score}, Sentence: {sentence}")
-            print(f"Summary: {call.summary}")
-            print("\n")
-    except (Ticker.DoesNotExist, ConferenceCall.DoesNotExist):
-        print("No conference call found for the given ticker name, year, and quarter.")
-
-get_conference_call_info()
+for ticker in tickers[10:20]:
+    print(ticker.symbol)
+    display_calls_by_ticker(ticker.symbol)
