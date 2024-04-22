@@ -57,3 +57,7 @@ def call_detail(request, ticker_name, year, quarter):
     ticker = Ticker.objects.get(name=ticker_name)
     call = ConferenceCall.objects.get(ticker=ticker, year=year, quarter=quarter)
     return render(request, 'call_detail.html', {'call': call})
+
+class LatestConferenceCallList(generics.ListAPIView):
+    queryset = ConferenceCall.objects.order_by('-date', '-time')[:30]
+    serializer_class = ConferenceCallSerializer
