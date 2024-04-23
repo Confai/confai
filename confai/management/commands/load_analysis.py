@@ -2,14 +2,14 @@ from django.core.management.base import BaseCommand
 from confai.models import Ticker, ConferenceCall
 from confai.stanalysis.sentiment import SentimentAnalyzer
 from confai.stanalysis.summary import DocumentSummarizer
-from confai.management.commands.get_calls import APIWrapper
+from confai.management.commands.get_calls import DCF
 from datetime import datetime
 
 class Command(BaseCommand):
     help = 'Get calls for the first 100 tickers and update the ConferenceCall model for each of them'
 
     def handle(self, *args, **options):
-        api = APIWrapper()
+        api = DCF()
         print("Getting tickers...")
         tickers = Ticker.objects.all()[:100]  # Get the first 100 tickers
         i = 0

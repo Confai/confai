@@ -1,10 +1,14 @@
 from django.shortcuts import get_object_or_404, render
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import generics
 
 from confai.models import ConferenceCall, Ticker
 from confai.stanalysis.plotter import generate_stock_chart, plot_data
 from confai.stanalysis.technical_analysis import StockAnalyzer
+
+from confai.serializers import ConferenceCallSerializer
 
 class TickerView(APIView):
     def get(self, request, ticker_symbol, year=None, quarter=None):
@@ -59,5 +63,5 @@ def call_detail(request, ticker_name, year, quarter):
     return render(request, 'call_detail.html', {'call': call})
 
 class LatestConferenceCallList(generics.ListAPIView):
-    queryset = ConferenceCall.objects.order_by('-date', '-time')[:30]
+    queryset = ConferenceCall.objects.order_by('-date')[:30]
     serializer_class = ConferenceCallSerializer

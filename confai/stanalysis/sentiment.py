@@ -3,12 +3,14 @@ import heapq
 import torch
 import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from gensim.summarization import summarize
 
 class SentimentAnalyzer:
     def __init__(self, text):
         print("Initializing SentimentAnalyzer...")
         print("splitting text into sentences...")
-        self.sentences = re.split(r'(?<=[.!?])\s+', text)
+        cleaned_text = re.sub(r'(Operator|\\nOperator)[^\\n]*', '', text)
+        self.sentences = re.split(r'(?<=[.!?])\s+', cleaned_text)
         self.tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
 
         if torch.cuda.is_available():
@@ -100,11 +102,17 @@ class SentimentAnalyzer:
 
         return total_sent
 
+    def summarize(self):
+        text = ' '.join(self.sentences)
+        summary = summarize(text, ratio=0.05)
+        return summary
+
     def get_analysis(self):
-        avg_scores = self.get_average_scores().tolist()
+        avg_scores = self.get_average_scores()
         extreme_sentences = self.find_extreme_sentences()
         overall_score = self.get_overall_score()
         weighted_average_sentiment=self.get_weighted_average_sentiment()
+        summary = self.summarize()
 
         return {
             'average_scores': avg_scores,
@@ -114,4 +122,5 @@ class SentimentAnalyzer:
             },
             'overall_score': overall_score,
             'weighted_average_sentiment': weighted_average_sentiment,
+            'summary': summary,
         }
