@@ -9,6 +9,7 @@ class Command(BaseCommand):
     help = 'Add today\'s calls to the database'
 
     def handle(self, *args, **options):
+        print("Adding today's calls to the database...")
         todays_calls = self.get_todays_calls()
 
         api = DCF()
@@ -21,9 +22,13 @@ class Command(BaseCommand):
             # Get or create the ticker object
             ticker, created = Ticker.objects.get_or_create(symbol=ticker_name)
 
+            # Check if the call already exists in the database
+            if ConferenceCall.objects.filter(ticker=ticker, year=year, quarter=quarter).exists():
+                print(f"Call for ticker: {ticker_name} for Q{quarter} {year} already exists in the database. Skipping analysis.")
+                continue
+
             # Get the transcript
             transcript = api.get_transcript(ticker_name, quarter, year)
-            #print(transcript)
 
             if transcript is None:
                 print(f"No transcript available for ticker: {ticker_name}")
@@ -32,7 +37,6 @@ class Command(BaseCommand):
             # Analyze the call text
             analyzer = SentimentAnalyzer(transcript.get('content'))
             analysis = analyzer.get_analysis()
-
 
             date_str = transcript.get('date')  # Extract date from the API response
             date = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S') if date_str else None

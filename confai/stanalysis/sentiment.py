@@ -104,7 +104,7 @@ class SentimentAnalyzer:
 
     def summarize(self):
         text = ' '.join(self.sentences)
-        summary = summarize(text, ratio=0.05)
+        summary = summarize(text, word_count=100)
         return summary
 
     def get_analysis(self):

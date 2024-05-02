@@ -30,6 +30,3 @@ def fetch_symbols():
             symbols_quarters_years.append((symbol.text, quarter, year))
 
     return symbols_quarters_years
-
-# Example usage
-calls = fetch_symbols()
