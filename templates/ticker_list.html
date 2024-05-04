@@ -1,6 +1,57 @@
-<h1>Tickers</h1>
-<ul>
-{% for ticker in tickers %}
-    <li><a href="{% url 'ticker_detail' ticker.symbol%}">{{ ticker.symbol }}</a></li>
-{% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticker List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 class="my-4">Today's Calls</h1>
+        <form method="GET" action="{% url 'ticker_list' %}">
+            <select name="sort">
+                <option value="date">Sort by Time Added</option>
+                <option value="score">Sort by Score</option>
+            </select>
+            <input type="submit" value="Sort">
+        </form>
+        <div class="row">
+            {% for ticker, score in ticker_data_today %}
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 border">
+                    <a href="{% url 'ticker_detail' ticker.symbol %}" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ ticker.symbol }}</h5>
+                            <p class="card-text">Score: {{ score }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p>No tickers available.</p>
+            </div>
+            {% endfor %}
+        </div>
+        <h1 class="my-4">Last 7 Days Calls</h1>
+        <div class="row">
+            {% for ticker, score in ticker_data_last_seven_days %}
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 border">
+                    <a href="{% url 'ticker_detail' ticker.symbol %}" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ ticker.symbol }}</h5>
+                            <p class="card-text">Score: {{ score }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p>No tickers available.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

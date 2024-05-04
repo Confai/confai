@@ -1,4 +1,7 @@
 from django.shortcuts import get_object_or_404, render
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
+from django.db.models import Prefetch, Q, F, Max
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -10,53 +13,83 @@ from confai.stanalysis.technical_analysis import StockAnalyzer
 
 from confai.serializers import ConferenceCallSerializer
 
+from datetime import timedelta
+
 class TickerView(APIView):
-    def get(self, request, ticker_symbol, year=None, quarter=None):
+    def get(self, request, ticker_symbol):
         ticker_obj = Ticker.objects.get(symbol=ticker_symbol)
-        calls = ConferenceCall.objects.filter(ticker=ticker_obj)
+        call = ConferenceCall.objects.filter(ticker=ticker_obj).latest('date')
+        print(call)
 
-        if year and quarter:  # Filter by year and quarter if they are provided
-            calls = calls.filter(year=year, quarter=quarter)
+        if call.average_scores and call.extreme_sentences and call.overall_sentiment:
+            extreme_sentences = call.extreme_sentences
+            formatted_extreme_sentences = {
+                'negative': [(round(score, 2), sent) for score, sent in extreme_sentences[0]],
+                'positive': [(round(score, 2), sent) for score, sent in extreme_sentences[1]],
+            }
 
-        results = []
-        for call in calls:
-            print(call.extreme_sentences)
-            print(call.overall_sentiment)
-            print(call.weighted_average_sentiment)
-            if call.average_scores and call.extreme_sentences and call.overall_sentiment:
+            result = {
+                'sentiment_analysis': {
+                    'weighted_average_sentiment': call.weighted_average_sentiment,
+                    'extreme_sentences': formatted_extreme_sentences,
+                    'overall_score': call.overall_sentiment,
+                },
+                'summary': call.summary,
+                'full_text': call.full_text,
+            }
 
-                results.append({
-                    'sentiment_analysis': {
-                        'average_scores': call.average_scores,
-                        'extreme_sentences': {
-                            'negative': [sent for score, sent in extreme_sentences[0]],
-                            'positive': [sent for score, sent in extreme_sentences[1]],
-                        },
-                        'overall_score': call.overall_sentiment,
-                        'weighted_average_sentiment': call.weighted_average_sentiment,
-                    },
-                    'summary': call.summary,
-                })
+            return Response({'call': result})
 
-        return Response({'calls': results})
+        return Response({'message': 'No call available for this ticker.'})
 
 def ticker_list(request):
-    tickers = Ticker.objects.all()
-    return render(request, 'ticker_list.html', {'tickers': tickers})
+    sort = request.GET.get('sort', 'date')
+    if sort == 'score':
+        sort = 'max_weighted_average_sentiment'
+    elif sort == 'date':
+        sort = 'latest_date'
+    today = timezone.now().date()
+    seven_days_ago = today - timezone.timedelta(days=7)
+    calls_in_last_seven_days = ConferenceCall.objects.filter(date__range=[seven_days_ago, today])
+    calls_today = ConferenceCall.objects.filter(date=today)
+    tickers_last_seven_days = Ticker.objects.filter(conferencecall__in=calls_in_last_seven_days).annotate(latest_date=Max('conferencecall__date'), max_weighted_average_sentiment=Max('conferencecall__weighted_average_sentiment')).order_by(sort)
+    tickers_today = Ticker.objects.filter(conferencecall__in=calls_today).annotate(latest_date=Max('conferencecall__date'), max_weighted_average_sentiment=Max('conferencecall__weighted_average_sentiment')).order_by(sort)
+    ticker_data_last_seven_days = [(ticker, ticker.conferencecall_set.order_by('-date')[0].weighted_average_sentiment if ticker.conferencecall_set.exists() else 'No call available') for ticker in tickers_last_seven_days]
+    ticker_data_today = [(ticker, ticker.conferencecall_set.order_by('-date')[0].weighted_average_sentiment if ticker.conferencecall_set.exists() else 'No call available') for ticker in tickers_today]
+    return render(request, 'ticker_list.html', {'ticker_data_today': ticker_data_today, 'ticker_data_last_seven_days': ticker_data_last_seven_days})
+
+def all_calls(request):
+    query = request.GET.get('q', '')
+    all_calls = ConferenceCall.objects.filter(Q(ticker__symbol__icontains=query) | Q(summary__icontains=query)).order_by('-date')
+    return render(request, 'all_calls.html', {'all_calls': all_calls})
 
 def ticker_detail(request, ticker_symbol):
     ticker = get_object_or_404(Ticker, symbol=ticker_symbol)
-    latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('year', 'quarter')
+    try:
+        latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('date')
+    except ObjectDoesNotExist:
+        return render(request, 'ticker_detail.html', {'ticker': ticker, 'message': 'No call available for this ticker.'})
 
-    #analyzer = StockAnalyzer(ticker.name, '2024-01-01')  # Replace '2007-01-01' with the actual start date
-    #indicator_data = analyzer.get_all() # Get all the indicator data
+    if latest_call.average_scores and latest_call.extreme_sentences and latest_call.overall_sentiment:
+        extreme_sentences = latest_call.extreme_sentences
+        formatted_extreme_sentences = {
+            'negative': [(round(float(score), 2), sent) for score, sent in extreme_sentences['negative']],
+            'positive': [(round(float(score), 2), sent) for score, sent in extreme_sentences['positive']],
+        }
 
-    #plots = plot_data(indicator_data)
-    #stock_chart = generate_stock_chart(ticker.name)  # Generate the stock chart
+        result = {
+            'sentiment_analysis': {
+                'weighted_average_sentiment': latest_call.weighted_average_sentiment,
+                'extreme_sentences': formatted_extreme_sentences,
+                'overall_score': latest_call.overall_sentiment,
+            },
+            'summary': latest_call.summary,
+            'full_text': latest_call.full_text,
+        }
 
-    #return render(request, 'ticker_detail.html', {'ticker': ticker, 'latest_call': latest_call, 'plots': plots, 'stock_chart': stock_chart})
+        return render(request, 'ticker_detail.html', {'ticker': ticker, 'latest_call': result})
 
-    return render(request, 'ticker_detail.html', {'ticker': ticker, 'latest_call': latest_call})
+    return render(request, 'ticker_detail.html', {'ticker': ticker, 'message': 'No call available for this ticker.'})
 def call_detail(request, ticker_name, year, quarter):
     ticker = Ticker.objects.get(name=ticker_name)
     call = ConferenceCall.objects.get(ticker=ticker, year=year, quarter=quarter)

@@ -1,62 +1,38 @@
 from django.core.management.base import BaseCommand
 from confai.models import Ticker, ConferenceCall
-from confai.stanalysis.sentiment import SentimentAnalyzer
-from confai.stanalysis.summary import DocumentSummarizer
-from confai.management.commands.get_calls import DCF
-from datetime import datetime
+from .writer import write_call
+import time
 
 class Command(BaseCommand):
-    help = 'Get calls for the first 100 tickers and update the ConferenceCall model for each of them'
+    help = 'Go through the database and update ConferenceCall model for each of them'
+
+    def add_arguments(self, parser):
+        parser.add_argument('year', type=int, help='The year of the calls to add')
+        parser.add_argument('quarter', type=int, help='The quarter of the calls to add')
 
     def handle(self, *args, **options):
-        api = DCF()
-        print("Getting tickers...")
-        tickers = Ticker.objects.all()[:100]  # Get the first 100 tickers
-        i = 0
-        for ticker in tickers:
-            i += 1
-            call = api.get_transcript(ticker.symbol, 4, 2023)
+        year = options['year']
+        quarter = options['quarter']
+        tickers = list(Ticker.objects.all())
+        total_tickers = len(tickers)
+        calls_added = 0
+        start_time = time.time()
 
-            if call is None:
-                print(f"No transcript available for call {i}, ticker: {ticker.symbol}")
-                continue
+        for index, ticker in enumerate(tickers):
+            if calls_added >= 450:
+                elapsed_time = time.time() - start_time
+                if elapsed_time < 3600:  # If less than an hour has passed
+                    time.sleep(3600 - elapsed_time)  # Sleep until an hour has passed
+                start_time = time.time()
+                calls_added = 0
 
-            print(f"Processing call {i} : {call.get('symbol')}")
+            if not ConferenceCall.objects.filter(ticker=ticker, year=year, quarter=quarter).exists():
+                write_call(ticker.symbol, quarter, year)
+                calls_added += 1
 
-            call_text = call.get('content')  # Extract content from the API response
-            year = call.get('year')  # Extract year from the API response
-            quarter = call.get('quarter')  # Extract quarter from the API response
-            date_str = call.get('date')  # Extract date from the API response
+            # Print progress and estimated time remaining
+            processed_tickers = index + 1
+            remaining_tickers = total_tickers - processed_tickers
+            estimated_time_remaining = remaining_tickers / 450
 
-            # Convert the date string to a datetime object, if it's not None
-            date = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S') if date_str else None
-
-            # Analyze the call text
-            analyzer = SentimentAnalyzer(call_text)
-            average_scores = analyzer.get_average_scores()  # Now returns a list of strings
-            highest_negative, highest_positive = analyzer.find_extreme_sentences()  # Now returns a list of strings
-            overall_sentiment = analyzer.get_overall_score()  # Now returns a string
-            weighted_average_sentiment = analyzer.get_weighted_average_sentiment()
-
-            summarizer = DocumentSummarizer(call_text)
-            summary = summarizer.docsummarize()
-
-            # Update or create the ConferenceCall instance and store the sentiment analysis results
-            call, created = ConferenceCall.objects.update_or_create(
-                ticker=ticker,
-                year=year,
-                quarter=quarter,
-                defaults={
-                    'full_text': call_text,
-                    'average_scores': average_scores,
-                    'extreme_sentences': {
-                        'negative': highest_negative,
-                        'positive': highest_positive,
-                    },
-                    'overall_sentiment': overall_sentiment,
-                    'summary': summary,
-                    'date': date,
-                    'weighted_average_sentiment': weighted_average_sentiment,
-                }
-            )
-        self.stdout.write(self.style.SUCCESS('Successfully updated ConferenceCall objects for the first 100 tickers'))
+            print(f"Processed {processed_tickers} of {total_tickers} tickers. Estimated time remaining: {estimated_time_remaining} hours.")

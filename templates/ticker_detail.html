@@ -1,82 +1,94 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ ticker.name }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="my-4">{{ ticker.name }}</h1>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5 mx-auto">
                 <div class="card mb-4">
                     <div class="card-header">
                         <h2 class="card-title">Latest Call</h2>
                     </div>
                     <div class="card-body">
-                        <h3>Sentiment Analysis</h3>
-                        <p>Average Scores: {{ latest_call.average_scores }}</p>
-                        <p>Extreme Sentences:</p>
-                        <ul>
-                            <li style="color: red;">Negative:
-                                <ul>
-                                    {% for score, sentence in latest_call.extreme_sentences.0 %}
-                                        <li>Score: {{ score }}, Sentence: {{ sentence }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            <li style="color: green;">Positive:
-                                <ul>
-                                    {% for score, sentence in latest_call.extreme_sentences.1 %}
-                                        <li>Score: {{ score }}, Sentence: {{ sentence }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        </ul>
-                        <p>Overall Score: {{ latest_call.overall_sentiment }}</p>
-                        <h3>Summary</h3>
-                        <p>{{ latest_call.summary }}</p>
-                        <details>
-                            <summary>Click to see Full Text</summary>
+                        <!-- Sentiment Analysis content will go here -->
+                        {% if latest_call %}
+                            <h3>Weighted Average Sentiment: {{ latest_call.sentiment_analysis.weighted_average_sentiment }}</h3>
+                            <h3>Overall Score: {{ latest_call.sentiment_analysis.overall_score }}</h3>
+                            <h3>Extreme Sentences:</h3>
+                            <ul>
+                                {% for score, sentence in latest_call.sentiment_analysis.extreme_sentences.negative %}
+                                    <li>{{ score }}: {{ sentence }}</li>
+                                {% endfor %}
+                                {% for score, sentence in latest_call.sentiment_analysis.extreme_sentences.positive %}
+                                    <li>{{ score }}: {{ sentence }}</li>
+                                {% endfor %}
+                            </ul>
+                            <h3>Full Text:</h3>
                             <p>{{ latest_call.full_text }}</p>
-                        </details>
+                        {% else %}
+                            <p>No call available for this ticker.</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
+            <div class="col-md-6 mx-auto">
+                <div class="card mb-4" style="height:600px">
                     <div class="card-header">
                         <h2 class="card-title">Stock Chart</h2>
                     </div>
                     <div class="card-body">
-                        <div id="stockChartDiv">{{ stock_chart|safe }}</div>
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container" style="height:100%;width:100%">
+                          <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                          {
+                          "autosize": true,
+                          "symbol": "{{ ticker.symbol }}",
+                          "interval": "D",
+                          "timezone": "Etc/UTC",
+                          "theme": "light",
+                          "style": "3",
+                          "locale": "en",
+                          "enable_publishing": false,
+                          "range": "5D",
+                          "backgroundColor": "rgba(242, 242, 242, 1)",
+                          "allow_symbol_change": true,
+                          "calendar": false,
+                          "support_host": "https://www.tradingview.com"
+                        }
+                          </script>
+                        </div>
+                        <!-- TradingView Widget END -->
                     </div>
                 </div>
-                <div class="card mb-4">
+                <div class="card mb-4" style="height:1000px">
                     <div class="card-header">
-                        <h2 class="card-title">Indicators</h2>
+                        <h2 class="card-title">Financials</h2>
                     </div>
                     <div class="card-body">
-                        {% for plot in plots %}
-                            <div>{{ plot|safe }}</div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        function changePlot() {
-            var select = document.getElementById("plotSelect");
-            var div = document.getElementById("plotDiv");
-            div.innerHTML = select.value;
-        }
-    </script>
-</body>
-</html>
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                          <div class="tradingview-widget-container__widget"></div>
+                          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                          {
+                          "isTransparent": false,
+                          "largeChartUrl": "",
+                          "displayMode": "regular",
+                          "width": "100%",
+                          "height": "100%",
+                          "colorTheme": "light",
+                          "symbol": "{{ ticker.symbol }}",
+                          "locale": "en"
+                        }
+                          </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                        <div class="trad

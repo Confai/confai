@@ -1,10 +1,9 @@
-import os
 import csv
 from django.core.management.base import BaseCommand
 from confai.models import Ticker
 
 class Command(BaseCommand):
-    help = 'Load tickers from a CSV file into the database'
+    help = 'Load NASDAQ tickers from screener CSV file into the database'
 
     def handle(self, *args, **options):
         with open(r'D:\confai\confai\management\commands\nasdaq_screen.csv', 'r') as file:
