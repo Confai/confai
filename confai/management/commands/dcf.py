@@ -25,3 +25,20 @@ class DCF:
         else:
             print(f"Warning: HTTP status code {response.status_code} when trying to get transcript.")
             return None
+
+    def get_news(self, ticker, limit=5):
+        endpoint = f"{self.base_url}/news/{ticker}/{limit}"
+        response = requests.get(endpoint)
+
+        #print(response.status_code)
+
+        if response.status_code == 200 and response.content:
+            try:
+                response_json = response.json()
+                return response_json
+            except json.JSONDecodeError:
+                print("Warning: Response is not a valid JSON.")
+                return None
+        else:
+            print(f"Warning: HTTP status code {response.status_code} when trying to get news.")
+            return None

@@ -1,4 +1,4 @@
-from confai.stanalysis import sentiment, summary
+from confai.stanalysis import sentiment
 import os
 def read_file():
     while True:
@@ -37,12 +37,3 @@ def print_sentiment(text):
     for score, sentence in highest_positive:
         print(f"Score: {score}, Sentence: {sentence}")
     print(f"Overall sentiment of the document: {analyzer.get_overall_score()}")
-
-def print_summary(text):
-    summarizer = summary.DocumentSummarizer(text)
-    summarized = summarizer.docsummarize()
-    print(summarized)
-
-
-print_sentiment(text)
-print_summary(text)

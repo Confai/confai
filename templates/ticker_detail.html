@@ -1,43 +1,85 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ ticker.name }}</title>
+    <title>{{ ticker.symbol }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .positive { color: green; }
+        .negative { color: red; }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
-        <h1 class="my-4">{{ ticker.name }}</h1>
+        <h1 class="my-4">{{ ticker.symbol }}</h1>
 
         <div class="row">
             <div class="col-md-5 mx-auto">
+                <!-- Sentiment Analysis Card -->
                 <div class="card mb-4">
                     <div class="card-header">
                         <h2 class="card-title">Latest Call</h2>
                     </div>
                     <div class="card-body">
-                        <!-- Sentiment Analysis content will go here -->
                         {% if latest_call %}
-                            <h3>Weighted Average Sentiment: {{ latest_call.sentiment_analysis.weighted_average_sentiment }}</h3>
-                            <h3>Overall Score: {{ latest_call.sentiment_analysis.overall_score }}</h3>
+                            <h3>Weighted Average Sentiment: {{ latest_call.sentiment_analysis.weighted_average_sentiment|floatformat:2 }}</h3>
+                            <h3>Relative Score: {{ relative_score }}</h3>
+                            <h3>Percentile: {{ percentile|floatformat:"0"|add:"%" }}</h3>
                             <h3>Extreme Sentences:</h3>
                             <ul>
                                 {% for score, sentence in latest_call.sentiment_analysis.extreme_sentences.negative %}
-                                    <li>{{ score }}: {{ sentence }}</li>
+                                    <li class="negative">{{ score|floatformat:2 }}: {{ sentence }}</li>
                                 {% endfor %}
                                 {% for score, sentence in latest_call.sentiment_analysis.extreme_sentences.positive %}
-                                    <li>{{ score }}: {{ sentence }}</li>
+                                    <li class="positive">{{ score|floatformat:2 }}: {{ sentence }}</li>
                                 {% endfor %}
                             </ul>
+                            <h3>Summary:</h3>
+                            <p>{{ latest_call.summary }}</p>
                             <h3>Full Text:</h3>
-                            <p>{{ latest_call.full_text }}</p>
+                            <p>
+                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseText" role="button" aria-expanded="false" aria-controls="collapseText">
+                                    Expand/Collapse
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseText">
+                                <div class="card card-body">
+                                    {{ latest_call.full_text|linebreaks }}
+                                </div>
+                            </div>
                         {% else %}
                             <p>No call available for this ticker.</p>
                         {% endif %}
                     </div>
                 </div>
+
+                <!-- News Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="card-title">News</h2>
+                    </div>
+                    <div class="card-body">
+                        {% if news %}
+                            <ul>
+                                {% for article in news %}
+                                    <li>
+                                        <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+                                        <p>Published on: {{ article.publishedDate }}</p>
+                                        <p>Source: {{ article.site }}</p>
+                                        <img src="{{ article.image }}" alt="{{ article.title }}">
+                                        <p>{{ article.text }}</p>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No news available for this ticker.</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
+
             <div class="col-md-6 mx-auto">
+                <!-- Stock Chart Card -->
                 <div class="card mb-4" style="height:600px">
                     <div class="card-header">
                         <h2 class="card-title">Stock Chart</h2>
@@ -68,6 +110,8 @@
                         <!-- TradingView Widget END -->
                     </div>
                 </div>
+
+                <!-- Financials Card -->
                 <div class="card mb-4" style="height:1000px">
                     <div class="card-header">
                         <h2 class="card-title">Financials</h2>
@@ -91,4 +135,13 @@
                           </script>
                         </div>
                         <!-- TradingView Widget END -->
-                        <div class="trad
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

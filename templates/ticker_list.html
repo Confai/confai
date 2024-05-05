@@ -16,15 +16,31 @@
             <input type="submit" value="Sort">
         </form>
         <div class="row">
-            {% for ticker, score in ticker_data_today %}
+            {% for ticker, weighted_average_sentiment, sentiment_category, percentile in ticker_data_today %}
             <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
                 <div class="card h-100 border">
                     <a href="{% url 'ticker_detail' ticker.symbol %}" class="text-decoration-none text-dark">
                         <div class="card-body">
                             <h5 class="card-title">{{ ticker.symbol }}</h5>
-                            <p class="card-text">Score: {{ score }}</p>
+                            <p class="card-text">Score: {{ weighted_average_sentiment|floatformat:2 }}</p>
+                            <p class="card-text">Relative Sentiment: {{ sentiment_category }}</p>
+                            <p class="card-text">Percentile: {{ percentile|floatformat:"0"|add:"%" }}</p>
                         </div>
                     </a>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                      {
+                      "symbol": "{{ ticker.symbol }}",
+                      "width": "100%",
+                      "isTransparent": false,
+                      "colorTheme": "light",
+                      "locale": "en"
+                    }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
                 </div>
             </div>
             {% empty %}
@@ -33,17 +49,33 @@
             </div>
             {% endfor %}
         </div>
-        <h1 class="my-4">Last 7 Days Calls</h1>
+        <h1 class="my-4">Yesterday's Calls</h1>
         <div class="row">
-            {% for ticker, score in ticker_data_last_seven_days %}
+            {% for ticker, weighted_average_sentiment, sentiment_category, percentile in ticker_data_yesterday %}
             <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
                 <div class="card h-100 border">
                     <a href="{% url 'ticker_detail' ticker.symbol %}" class="text-decoration-none text-dark">
                         <div class="card-body">
                             <h5 class="card-title">{{ ticker.symbol }}</h5>
-                            <p class="card-text">Score: {{ score }}</p>
+                            <p class="card-text">Score: {{ weighted_average_sentiment }}</p>
+                            <p class="card-text">Sentiment: {{ sentiment_category }}</p>
+                            <p class="card-text">Percentile: {{ percentile }}</p>
                         </div>
                     </a>
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                      {
+                      "symbol": "{{ ticker.symbol }}",
+                      "width": "100%",
+                      "isTransparent": false,
+                      "colorTheme": "light",
+                      "locale": "en"
+                    }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
                 </div>
             </div>
             {% empty %}

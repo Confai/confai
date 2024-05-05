@@ -1,4 +1,4 @@
-from confai.management.commands.get_calls import DCF
+from confai.management.commands.dcf import DCF
 from confai.stanalysis.sentiment import SentimentAnalyzer
 from confai.models import Ticker, ConferenceCall
 from datetime import datetime
