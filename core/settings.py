@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Add your apps here
     'confai',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

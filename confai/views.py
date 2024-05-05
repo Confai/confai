@@ -2,42 +2,18 @@ from datetime import datetime, timedelta
 from django.shortcuts import get_object_or_404, render
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
-from django.db.models import Prefetch, Q, F, Max
+from django.db.models import Count, Prefetch, Q, F, Max
 from django.core.paginator import Paginator
+from django.views.generic import ListView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
 from confai.models import ConferenceCall, Ticker
 from confai.management.commands.dcf import DCF
-from confai.serializers import ConferenceCallSerializer
+from confai.serializers import ConferenceCallSerializer, TickerSerializer, SymbolSerializer
 import re
 
-class TickerView(APIView):
-    def get(self, request, ticker_symbol):
-        ticker_obj = Ticker.objects.get(symbol=ticker_symbol)
-        call = ConferenceCall.objects.filter(ticker=ticker_obj).latest('date')
-        print(call)
 
-        if call.average_scores and call.extreme_sentences and call.overall_sentiment:
-            extreme_sentences = call.extreme_sentences
-            formatted_extreme_sentences = {
-                'negative': [(round(score, 2), sent) for score, sent in extreme_sentences[0]],
-                'positive': [(round(score, 2), sent) for score, sent in extreme_sentences[1]],
-            }
-
-            result = {
-                'sentiment_analysis': {
-                    'weighted_average_sentiment': call.weighted_average_sentiment,
-                    'extreme_sentences': formatted_extreme_sentences,
-                    'overall_score': call.overall_sentiment,
-                },
-                'summary': call.summary,
-                'full_text': call.full_text,
-            }
-
-            return Response({'call': result})
-
-        return Response({'message': 'No call available for this ticker.'})
 
 
 def ticker_list(request):
@@ -145,13 +121,84 @@ def call_detail(request, ticker_name, year, quarter):
     call = ConferenceCall.objects.get(ticker=ticker, year=year, quarter=quarter)
     return render(request, 'call_detail.html', {'call': call})
 
-class LatestConferenceCallList(generics.ListAPIView):
-    queryset = ConferenceCall.objects.order_by('-date')[:30]
-    serializer_class = ConferenceCallSerializer
-
 def format_call_text(call_text):
     # The pattern matches any sequence of word characters, followed by optional spaces, another sequence of word characters, and a colon
     pattern = r"(\w+\s*\w*:)"
     # Add a newline before each match
     formatted_text = re.sub(pattern, r'\n\n\1', call_text)
     return formatted_text
+
+class LatestConferenceCallList(ListView):
+    model = ConferenceCall
+    template_name = 'latest_calls.html'  # replace with your template
+    context_object_name = 'latest_calls'  # replace with your context object name
+    ordering = ['-date']  # order by date in descending order
+
+class TickerListAPIView(APIView):
+    def get(self, request, format=None):
+        # Get today's date and yesterday's date
+        today = datetime.now().date()
+        yesterday = today - timedelta(days=1)
+
+        # Get the tickers for yesterday and today
+        tickers_yesterday = Ticker.objects.filter(conferencecall__date=yesterday)
+        tickers_today = Ticker.objects.filter(conferencecall__date=today)
+
+        # Calculate the percentile for each ticker's weighted_average_sentiment
+        for ticker in tickers_yesterday:
+            latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('date')
+            queryset = ConferenceCall.objects.filter(ticker=ticker)
+            percentile = calculate_percentile(queryset, latest_call.weighted_average_sentiment)
+            ticker.percentile = percentile
+
+        for ticker in tickers_today:
+            latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('date')
+            queryset = ConferenceCall.objects.filter(ticker=ticker)
+            percentile = calculate_percentile(queryset, latest_call.weighted_average_sentiment)
+            ticker.percentile = percentile
+
+        # Prepare the data for rendering
+        ticker_data_yesterday = [{'ticker': ticker, 'weighted_average_sentiment': ticker.conferencecall_set.order_by('-date')[0].weighted_average_sentiment if ticker.conferencecall_set.exists() else 'No call available', 'sentiment_category': 'positive' if ticker.percentile > 75 else 'neutral' if ticker.percentile > 25 else 'negative', 'percentile': ticker.percentile} for ticker in tickers_yesterday]
+        ticker_data_today = [{'ticker': ticker, 'weighted_average_sentiment': ticker.conferencecall_set.order_by('-date')[0].weighted_average_sentiment if ticker.conferencecall_set.exists() else 'No call available', 'sentiment_category': 'positive' if ticker.percentile > 75 else 'neutral' if ticker.percentile > 25 else 'negative', 'percentile': ticker.percentile} for ticker in tickers_today]
+
+        # Serialize the data
+        serializer_yesterday = TickerSerializer(ticker_data_yesterday, many=True)
+        serializer_today = TickerSerializer(ticker_data_today, many=True)
+
+        # Return the serialized data
+        return Response({'ticker_data_yesterday': serializer_yesterday.data, 'ticker_data_today': serializer_today.data})
+
+class CallDetailAPIView(APIView):
+    def get(self, request, ticker_symbol, year, quarter, format=None):
+        ticker = get_object_or_404(Ticker, symbol=ticker_symbol)
+        call = get_object_or_404(ConferenceCall, ticker=ticker, year=year, quarter=quarter)
+
+        # Calculate the percentile for the call's weighted_average_sentiment
+        lower_count = ConferenceCall.objects.filter(weighted_average_sentiment__lt=call.weighted_average_sentiment).count()
+        total_count = ConferenceCall.objects.count()
+        percentile = (lower_count / total_count) * 100
+        call.percentile = percentile
+        call.sentiment_category = 'positive' if percentile > 75 else 'neutral' if percentile > 25 else 'negative'
+
+        # Serialize the data
+        serializer = ConferenceCallSerializer(call)
+
+        # Return the serialized data
+        return Response(serializer.data)
+
+class SymbolAPIView(APIView):
+    def get(self, request, symbol, format=None):
+        ticker = get_object_or_404(Ticker, symbol=symbol)
+        latest_call = ConferenceCall.objects.filter(ticker=ticker).latest('date')
+
+        lower_count = ConferenceCall.objects.filter(weighted_average_sentiment__lt=latest_call.weighted_average_sentiment).count()
+        total_count = ConferenceCall.objects.count()
+        percentile = (lower_count / total_count) * 100
+        ticker.percentile = percentile
+        ticker.sentiment_category = 'positive' if percentile > 75 else 'neutral' if percentile > 25 else 'negative'
+
+        # Serialize the data
+        serializer = SymbolSerializer(ticker)
+
+        # Return the serialized data
+        return Response(serializer.data)

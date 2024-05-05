@@ -1,0 +1,3 @@
+celerybeat*
+db.sqlite3
+calls/

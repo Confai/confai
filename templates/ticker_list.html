@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>Ticker List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+    .positive-call {
+        border: 4px solid green;
+    }
+    .negative-call {
+        border: 4px solid red;
+    }
+</style>
 </head>
 <body>
     <div class="container-fluid">
@@ -18,10 +26,12 @@
         <div class="row">
             {% for ticker, weighted_average_sentiment, sentiment_category, percentile in ticker_data_today %}
             <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-                <div class="card h-100 border">
+                <div class="card h-100 border {% if sentiment_category == 'Positive' %}positive-call{% elif sentiment_category == 'Negative' %}negative-call{% endif %}">
                     <a href="{% url 'ticker_detail' ticker.symbol %}" class="text-decoration-none text-dark">
-                        <div class="card-body">
+                        <div class="card-header">
                             <h5 class="card-title">{{ ticker.symbol }}</h5>
+                        </div>
+                        <div class="card-body">
                             <p class="card-text">Score: {{ weighted_average_sentiment|floatformat:2 }}</p>
                             <p class="card-text">Relative Sentiment: {{ sentiment_category }}</p>
                             <p class="card-text">Percentile: {{ percentile|floatformat:"0"|add:"%" }}</p>
@@ -55,11 +65,13 @@
             <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
                 <div class="card h-100 border">
                     <a href="{% url 'ticker_detail' ticker.symbol %}" class="text-decoration-none text-dark">
-                        <div class="card-body">
+                        <div class="card-header">
                             <h5 class="card-title">{{ ticker.symbol }}</h5>
-                            <p class="card-text">Score: {{ weighted_average_sentiment }}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Score: {{ weighted_average_sentiment|floatformat:2 }}</p>
                             <p class="card-text">Sentiment: {{ sentiment_category }}</p>
-                            <p class="card-text">Percentile: {{ percentile }}</p>
+                            <p class="card-text">Percentile: {{ percentile|floatformat:"0"|add:"%" }}</p>
                         </div>
                     </a>
                     <!-- TradingView Widget BEGIN -->
