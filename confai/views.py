@@ -124,6 +124,10 @@ class TickerListAPIView(APIView):
         # Return the serialized data
         return Response({'ticker_data_today': serializer_today.data})
 
+class CustomCursorPagination(CursorPagination):
+    page_size = 10
+    ordering = '-latest_call_date'
+
 class PriorTickerListAPIView(APIView):
     #authentication_classes = [TokenAuthentication]
     #permission_classes = [IsAuthenticated]

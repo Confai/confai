@@ -3,3 +3,5 @@ calls/
 authtokentest.py
 confalysis.py
 display_calls.py
+db.json
+db.sqlite3
