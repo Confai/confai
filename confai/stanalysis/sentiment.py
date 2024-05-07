@@ -7,10 +7,9 @@ from gensim.summarization import summarize
 
 class SentimentAnalyzer:
     def __init__(self, text):
-        print("Initializing SentimentAnalyzer...")
-        print("splitting text into sentences...")
         cleaned_text = re.sub(r'(Operator|\\nOperator)[^\\n]*', '', text)
         self.sentences = re.split(r'(?<=[.!?])\s+', cleaned_text)
+        cache_dir = "D:\\transformers\\"
         self.tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert", cache_dir=cache_dir)
 
         if torch.cuda.is_available():
@@ -27,9 +26,7 @@ class SentimentAnalyzer:
     def run_model(self):
         cache_dir = "D:\\transformers\\"
 
-        print("Running the model...")
         results = []
-        print("Loaded! Processing sentences...")
         with torch.no_grad():  # Disable gradient computation
             for idx, sentence in enumerate(self.sentences):
                 inputs = self.tokenizer(sentence, return_tensors="pt", padding=True, truncation=True).to(self.device)

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import ConferenceCall, Ticker
 from confai.management.commands.dcf import DCF
-import re
+from django.db.models import Prefetch
 
 class ConferenceCallSerializer(serializers.ModelSerializer):
     percentile = serializers.FloatField(read_only=True)
@@ -10,19 +10,14 @@ class ConferenceCallSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ConferenceCall
-        fields = ['year', 'quarter', 'summary', 'average_scores', 'extreme_sentences', 'overall_sentiment', 'weighted_average_sentiment', 'percentile', 'sentiment_category', 'full_text']
+        fields = ['year', 'quarter', 'date', 'summary', 'average_scores', 'extreme_sentences', 'overall_sentiment', 'weighted_average_sentiment', 'percentile', 'sentiment_category', 'full_text']
 
     def get_full_text(self, obj):
-        return self.format_call_text(obj.full_text)
+        return ConferenceCall.format_call_text(obj.full_text)
 
-    def format_call_text(self, call_text):
-        # The pattern matches any sequence of word characters, followed by optional spaces, another sequence of word characters, and a colon
-        pattern = r"(\w+\s*\w*:)"
-        # Add a newline before each match
-        formatted_text = re.sub(pattern, r'\n\n\1', call_text)
-        return formatted_text
 
 class TickerSerializer(serializers.ModelSerializer):
+    symbol = serializers.CharField(read_only=True)
     weighted_average_sentiment = serializers.FloatField(read_only=True)
     percentile = serializers.FloatField(read_only=True)
     sentiment_category = serializers.CharField(read_only=True)
@@ -43,30 +38,46 @@ class SymbolSerializer(serializers.ModelSerializer):
         model = Ticker
         fields = ['symbol', 'weighted_average_sentiment', 'sentiment_category', 'percentile', 'news', 'calls', 'latest_call_info']
 
+    def to_representation(self, instance):
+        # Prefetch the related ConferenceCall objects and annotate with latest call data
+        latest_call = Prefetch('conferencecall_set', queryset=ConferenceCall.objects.order_by('-date'),
+                               to_attr='latest_call')
+        all_calls = Prefetch('conferencecall_set', queryset=ConferenceCall.objects.order_by('year', 'quarter'),
+                             to_attr='all_calls')
+        instance = Ticker.objects.filter(symbol=instance.symbol).prefetch_related(latest_call, all_calls).get()
+
+        return super().to_representation(instance)
+
     def get_calls(self, obj):
-        calls = ConferenceCall.objects.filter(ticker=obj).values('year', 'quarter')
-        return list(calls)
+        # Use the prefetched ConferenceCall objects
+        calls = [{'year': call.year, 'quarter': call.quarter} for call in obj.all_calls]
+        return calls
+
+    def get_latest_call_info(self, obj):
+        # Use the prefetched ConferenceCall objects
+        latest_call = obj.latest_call[0] if obj.latest_call else None
+        if latest_call:
+            return {
+                'year': latest_call.year,
+                'quarter': latest_call.quarter,
+                'date': latest_call.date,
+                'weighted_average_sentiment': latest_call.weighted_average_sentiment,
+                'summary': latest_call.summary,
+                'full_text': ConferenceCall.format_call_text(latest_call.full_text),
+                'negative_sentences': latest_call.extreme_sentences[
+                    'negative'] if latest_call.extreme_sentences else None,
+                'positive_sentences': latest_call.extreme_sentences[
+                    'positive'] if latest_call.extreme_sentences else None
+            }
+        return None
 
     def get_news(self, obj):
         api = DCF()
         return api.get_news(obj.symbol)
 
-    def get_latest_call_info(self, obj):
-        latest_call = ConferenceCall.objects.filter(ticker=obj).latest('date')
-        return {
-            'year': latest_call.year,
-            'quarter': latest_call.quarter,
-            'date': latest_call.date,
-            'weighted_average_sentiment': latest_call.weighted_average_sentiment,
-            'summary': latest_call.summary,
-            'full_text': self.format_call_text(latest_call.full_text),
-            'negative_sentences': latest_call.extreme_sentences['negative'] if latest_call.extreme_sentences else None,
-            'positive_sentences': latest_call.extreme_sentences['positive'] if latest_call.extreme_sentences else None
-        }
+class AllCallsSerializer(serializers.ModelSerializer):
+    symbol = serializers.CharField(source='ticker.symbol')
 
-    def format_call_text(self, call_text):
-        # The pattern matches any sequence of word characters, followed by optional spaces, another sequence of word characters, and a colon
-        pattern = r"(\w+\s*\w*:)"
-        # Add a newline before each match
-        formatted_text = re.sub(pattern, r'\n\n\1', call_text)
-        return formatted_text
+    class Meta:
+        model = ConferenceCall
+        fields = ['symbol', 'year', 'quarter', 'date', 'weighted_average_sentiment', 'summary']

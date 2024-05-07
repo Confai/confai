@@ -1,3 +1,5 @@
 celerybeat*
-db.sqlite3
 calls/
+authtokentest.py
+confalysis.py
+display_calls.py
