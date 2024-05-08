@@ -1,6 +1,9 @@
 from django.core.management.base import BaseCommand
 from confai.models import Ticker, ConferenceCall
 from .writer import write_call
+import logging
+
+logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = 'Go through the database and update ConferenceCall model for each of them'
@@ -15,7 +18,6 @@ class Command(BaseCommand):
         quarter = options['quarter']
         start_ticker = options['start']
 
-
         if start_ticker:
             tickers = list(Ticker.objects.filter(symbol__gte=start_ticker))
         else:
@@ -27,10 +29,14 @@ class Command(BaseCommand):
             calls_added = 0
 
             if not ConferenceCall.objects.filter(ticker=ticker, year=year, quarter=quarter).exists():
-                write_call(ticker.symbol, quarter, year)
-                calls_added += 1
+                try:
+                    write_call(ticker.symbol, quarter, year)
+                    calls_added += 1
+                    logger.info(f"Added call for ticker: {ticker.symbol} for Q{quarter} {year}")
+                except Exception as e:
+                    logger.error(f"Error adding call for ticker: {ticker.symbol} for Q{quarter} {year}")
+                    logger.error(e)
 
-            # Print progress and estimated time remaining
+            # Log progress and estimated time remaining
             processed_tickers = index + 1
-
-            print(f"Processed {processed_tickers} of {total_tickers} tickers.")
+            logger.info(f"Processed {processed_tickers} of {total_tickers} tickers.")

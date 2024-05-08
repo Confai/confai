@@ -1,12 +1,16 @@
 import requests
 from xml.etree import ElementTree as ET
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 def fetch_symbols():
     # URL of the XML file
     url = "https://seekingalpha.com/sector/transcripts.xml"
 
     # Send a GET request to the URL
+    logger.info(f"Sending request to {url}")
     response = requests.get(url)
 
     # Parse the XML content of the response
@@ -28,5 +32,9 @@ def fetch_symbols():
         if match and symbol is not None:
             quarter, year = match.groups()
             symbols_quarters_years.append((symbol.text, quarter, year))
+            logger.info(f"Added symbol: {symbol.text} for Q{quarter} {year}")
+        else:
+            logger.error(f"Failed to add symbol for title: {title}")
 
+    logger.info(f"Successfully fetched symbols.")
     return symbols_quarters_years

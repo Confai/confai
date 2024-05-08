@@ -1,7 +1,10 @@
+import logging
 from confai.management.commands.dcf import DCF
 from confai.stanalysis.sentiment import SentimentAnalyzer
 from confai.models import Ticker, ConferenceCall
 from datetime import datetime
+
+logger = logging.getLogger(__name__)
 
 def write_call(ticker_name, quarter, year):
     api = DCF()
@@ -11,7 +14,7 @@ def write_call(ticker_name, quarter, year):
 
     # Check if the call already exists in the database
     if ConferenceCall.objects.filter(ticker=ticker, year=year, quarter=quarter).exists():
-        print(
+        logger.info(
             f"Call for ticker: {ticker_name} for Q{quarter} {year} already exists in the database. Skipping analysis.")
         return
 
@@ -19,7 +22,7 @@ def write_call(ticker_name, quarter, year):
     transcript = api.get_transcript(ticker_name, quarter, year)
 
     if transcript is None:
-        print(f"No transcript available for ticker: {ticker_name}")
+        logger.error(f"No transcript available for ticker: {ticker_name}")
         return
 
     # Analyze the call text
@@ -44,4 +47,4 @@ def write_call(ticker_name, quarter, year):
             'weighted_average_sentiment': analysis['weighted_average_sentiment'],
         }
     )
-    print(f"Added call for ticker: {ticker_name} for Q{quarter} {year}")
+    logger.info(f"Added call for ticker: {ticker_name} for Q{quarter} {year}")
