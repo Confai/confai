@@ -23,12 +23,7 @@ Scrape, Analyze, and Serve Earnings Call Transcripts with sentiment analysis and
 2. Install the required packages:
     ```bash
    pip install -r requirements.txt
-   ``` 
-   Or use conda
-    ```bash
-   conda env create -f environment.yml
-    conda activate confai
-    ```
+   ```
 ### Running the Application
 
 1. Make and apply the migrations:
