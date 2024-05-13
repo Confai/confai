@@ -9,8 +9,7 @@ class SentimentAnalyzer:
     def __init__(self, text):
         cleaned_text = re.sub(r'(Operator|\\nOperator)[^\\n]*', '', text)
         self.sentences = re.split(r'(?<=[.!?])\s+', cleaned_text)
-        cache_dir = "D:\\transformers\\"
-        self.tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert", cache_dir=cache_dir)
+        self.tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
 
         if torch.cuda.is_available():
             print("using GPU!")
@@ -18,13 +17,12 @@ class SentimentAnalyzer:
         else:
             self.device = torch.device('cpu')
 
-        self.model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert", cache_dir=cache_dir).to(self.device)
+        self.model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert").to(self.device)
         self.labels = {0: 'positive', 1: 'negative', 2: 'neutral', }
         self.softmax = torch.nn.Softmax(dim=0)  # Softmax function for converting logits to probabilities
         self.results = self.run_model()
 
     def run_model(self):
-        cache_dir = "D:\\transformers\\"
 
         results = []
         with torch.no_grad():  # Disable gradient computation
