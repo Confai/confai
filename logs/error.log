@@ -1,0 +1,1611 @@
+ERROR 2024-05-09 11:34:18,860 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 30, in percentile
+    expression=CumeDist(),
+NameError: name 'CumeDist' is not defined
+ERROR 2024-05-09 11:44:19,995 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 28, in percentile
+    percentile=ExpressionWrapper(
+NameError: name 'ExpressionWrapper' is not defined
+ERROR 2024-05-09 11:45:00,743 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 29, in percentile
+    Count('pk', filter=F('score__isnull=False')) * Value(1.0) /
+NameError: name 'Count' is not defined
+ERROR 2024-05-09 11:46:11,189 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 27, in percentile
+    results = ConferenceCall.objects.annotate(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1638, in _annotate
+    clone.query.add_annotation(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1133, in add_annotation
+    annotation = annotation.resolve_expression(self, allow_joins=True, reuse=None)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 285, in resolve_expression
+    [
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 286, in <listcomp>
+    expr.resolve_expression(query, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\aggregates.py", line 65, in resolve_expression
+    c.filter = c.filter and c.filter.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 829, in resolve_expression
+    return query.resolve_ref(self.name, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1977, in resolve_ref
+    join_info = self.setup_joins(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1824, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1725, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'score' into field. Choices are: average_scores, date, extreme_sentences, full_text, id, overall_sentiment, quarter, summary, ticker, ticker_id, weighted_average_sentiment, year
+ERROR 2024-05-09 11:46:43,389 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1847, in transform
+    return self.try_transform(wrapped, name)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1357, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'isnull=False' for FloatField or join on the field not permitted, perhaps you meant isnull?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 27, in percentile
+    results = ConferenceCall.objects.annotate(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1638, in _annotate
+    clone.query.add_annotation(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1133, in add_annotation
+    annotation = annotation.resolve_expression(self, allow_joins=True, reuse=None)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 285, in resolve_expression
+    [
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 286, in <listcomp>
+    expr.resolve_expression(query, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\aggregates.py", line 65, in resolve_expression
+    c.filter = c.filter and c.filter.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 829, in resolve_expression
+    return query.resolve_ref(self.name, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1993, in resolve_ref
+    transform = join_info.transform_function(targets[0], final_alias)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1851, in transform
+    raise last_field_exception
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1824, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1762, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'isnull=False' into field. Join on 'weighted_average_sentiment' not permitted.
+ERROR 2024-05-09 11:47:51,294 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 29, in percentile
+    Count('pk', filter=~F('weighted_average_sentiment').isnull()) * Value(1.0) /
+AttributeError: 'F' object has no attribute 'isnull'
+ERROR 2024-05-09 11:49:16,474 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 27, in percentile
+    results = ConferenceCall.objects.annotate(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1638, in _annotate
+    clone.query.add_annotation(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1133, in add_annotation
+    annotation = annotation.resolve_expression(self, allow_joins=True, reuse=None)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 285, in resolve_expression
+    [
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 286, in <listcomp>
+    expr.resolve_expression(query, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 701, in resolve_expression
+    lhs = self.lhs.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\aggregates.py", line 65, in resolve_expression
+    c.filter = c.filter and c.filter.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 1324, in resolve_expression
+    raise TypeError("Cannot negate non-conditional expressions.")
+TypeError: Cannot negate non-conditional expressions.
+ERROR 2024-05-09 11:51:41,149 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:41,149 writer No transcript available for ticker: ATO
+ERROR 2024-05-09 11:51:41,861 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:41,861 writer No transcript available for ticker: GNK
+ERROR 2024-05-09 11:51:42,525 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:42,525 writer No transcript available for ticker: LMB
+ERROR 2024-05-09 11:51:43,264 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:43,264 writer No transcript available for ticker: CBSTF
+ERROR 2024-05-09 11:51:43,943 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:43,943 writer No transcript available for ticker: HHH
+ERROR 2024-05-09 11:51:44,644 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:44,659 writer No transcript available for ticker: MKSI
+ERROR 2024-05-09 11:51:45,367 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:45,367 writer No transcript available for ticker: IVR
+ERROR 2024-05-09 11:51:46,069 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:46,069 writer No transcript available for ticker: CIM
+ERROR 2024-05-09 11:51:46,763 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:46,763 writer No transcript available for ticker: HBI
+ERROR 2024-05-09 11:51:47,472 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:47,472 writer No transcript available for ticker: EPAM
+ERROR 2024-05-09 11:51:48,135 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:48,135 writer No transcript available for ticker: AKBA
+ERROR 2024-05-09 11:51:48,806 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:48,806 writer No transcript available for ticker: CSIQ
+ERROR 2024-05-09 11:51:49,476 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:49,476 writer No transcript available for ticker: CPRX
+ERROR 2024-05-09 11:51:50,155 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:50,155 writer No transcript available for ticker: WRBY
+ERROR 2024-05-09 11:51:50,856 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:50,856 writer No transcript available for ticker: AMLX
+ERROR 2024-05-09 11:51:51,580 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:51,580 writer No transcript available for ticker: VYX
+ERROR 2024-05-09 11:51:52,313 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:52,313 writer No transcript available for ticker: AVXL
+ERROR 2024-05-09 11:51:53,014 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:53,014 writer No transcript available for ticker: MRMD
+ERROR 2024-05-09 11:51:53,746 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:53,762 writer No transcript available for ticker: BTAI
+ERROR 2024-05-09 11:51:54,479 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 11:51:54,479 writer No transcript available for ticker: TPR
+ERROR 2024-05-09 11:54:32,556 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.objects.with_percentile_rank().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 9, in with_percentile_rank
+    percentile_rank=Window(
+NameError: name 'Window' is not defined
+ERROR 2024-05-09 11:54:53,726 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.objects.with_percentile_rank().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 9, in with_percentile_rank
+    expression=PercentRank(),
+NameError: name 'PercentRank' is not defined
+ERROR 2024-05-09 12:01:22,209 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.objects.with_percentile_rank().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 8, in with_percentile_rank
+    queryset = self.get_queryset().annotate(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1638, in _annotate
+    clone.query.add_annotation(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1133, in add_annotation
+    annotation = annotation.resolve_expression(self, allow_joins=True, reuse=None)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 285, in resolve_expression
+    [
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 286, in <listcomp>
+    expr.resolve_expression(query, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 950, in resolve_expression
+    c.source_expressions[pos] = arg.resolve_expression(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 285, in resolve_expression
+    [
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 286, in <listcomp>
+    expr.resolve_expression(query, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\expressions.py", line 829, in resolve_expression
+    return query.resolve_ref(self.name, allow_joins, reuse, summarize)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1977, in resolve_ref
+    join_info = self.setup_joins(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1824, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\query.py", line 1725, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'value' into field. Choices are: average_scores, date, extreme_sentences, full_text, id, overall_sentiment, quarter, summary, ticker, ticker_id, weighted_average_sentiment, year
+ERROR 2024-05-09 12:02:51,200 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.objects.with_percentile_rank().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 8, in with_percentile_rank
+    queryset = self.get_queryset().annotate(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1631, in _annotate
+    raise ValueError(
+ValueError: The annotation 'percentile_rank' conflicts with a field on the model.
+ERROR 2024-05-09 12:03:19,849 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:19,849 writer No transcript available for ticker: ATO
+ERROR 2024-05-09 12:03:20,550 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:20,550 writer No transcript available for ticker: GNK
+ERROR 2024-05-09 12:03:21,219 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:21,219 writer No transcript available for ticker: LMB
+ERROR 2024-05-09 12:03:21,951 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:21,951 writer No transcript available for ticker: CBSTF
+ERROR 2024-05-09 12:03:22,652 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:22,652 writer No transcript available for ticker: HHH
+ERROR 2024-05-09 12:03:23,321 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:23,321 writer No transcript available for ticker: MKSI
+ERROR 2024-05-09 12:03:24,030 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:24,031 writer No transcript available for ticker: IVR
+ERROR 2024-05-09 12:03:24,729 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:24,729 writer No transcript available for ticker: CIM
+ERROR 2024-05-09 12:03:25,430 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:25,430 writer No transcript available for ticker: HBI
+ERROR 2024-05-09 12:03:26,131 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:26,131 writer No transcript available for ticker: EPAM
+ERROR 2024-05-09 12:03:26,798 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:26,798 writer No transcript available for ticker: AKBA
+ERROR 2024-05-09 12:03:27,479 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:27,479 writer No transcript available for ticker: CSIQ
+ERROR 2024-05-09 12:03:28,191 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:28,191 writer No transcript available for ticker: CPRX
+ERROR 2024-05-09 12:03:28,867 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:28,867 writer No transcript available for ticker: WRBY
+ERROR 2024-05-09 12:03:29,538 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:29,538 writer No transcript available for ticker: AMLX
+ERROR 2024-05-09 12:03:30,239 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:30,255 writer No transcript available for ticker: VYX
+ERROR 2024-05-09 12:03:31,054 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:31,054 writer No transcript available for ticker: AVXL
+ERROR 2024-05-09 12:03:31,775 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:31,775 writer No transcript available for ticker: MRMD
+ERROR 2024-05-09 12:03:32,439 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:32,439 writer No transcript available for ticker: BTAI
+ERROR 2024-05-09 12:03:33,124 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:03:33,124 writer No transcript available for ticker: TPR
+ERROR 2024-05-09 12:05:37,326 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.objects.with_percentile_rank().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 8, in with_percentile_rank
+    queryset = self.get_queryset().annotate(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1590, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1631, in _annotate
+    raise ValueError(
+ValueError: The annotation 'percentile_rank' conflicts with a field on the model.
+ERROR 2024-05-09 12:14:58,309 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:14:58,309 writer No transcript available for ticker: ATO
+ERROR 2024-05-09 12:14:58,980 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:14:58,980 writer No transcript available for ticker: GNK
+ERROR 2024-05-09 12:14:59,699 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:14:59,699 writer No transcript available for ticker: LMB
+ERROR 2024-05-09 12:15:00,420 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:00,420 writer No transcript available for ticker: CBSTF
+ERROR 2024-05-09 12:15:01,168 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:01,168 writer No transcript available for ticker: HHH
+ERROR 2024-05-09 12:15:01,838 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:01,838 writer No transcript available for ticker: MKSI
+ERROR 2024-05-09 12:15:02,987 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:02,987 writer No transcript available for ticker: IVR
+ERROR 2024-05-09 12:15:03,672 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:03,672 writer No transcript available for ticker: CIM
+ERROR 2024-05-09 12:15:04,373 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:04,373 writer No transcript available for ticker: HBI
+ERROR 2024-05-09 12:15:05,075 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:05,075 writer No transcript available for ticker: EPAM
+ERROR 2024-05-09 12:15:05,775 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:05,775 writer No transcript available for ticker: AKBA
+ERROR 2024-05-09 12:15:06,524 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:06,524 writer No transcript available for ticker: CSIQ
+ERROR 2024-05-09 12:15:07,194 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:07,194 writer No transcript available for ticker: CPRX
+ERROR 2024-05-09 12:15:07,902 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:07,902 writer No transcript available for ticker: WRBY
+ERROR 2024-05-09 12:15:08,696 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:08,696 writer No transcript available for ticker: AMLX
+ERROR 2024-05-09 12:15:09,418 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:09,418 writer No transcript available for ticker: VYX
+ERROR 2024-05-09 12:15:10,113 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:10,113 writer No transcript available for ticker: AVXL
+ERROR 2024-05-09 12:15:10,799 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:10,799 writer No transcript available for ticker: MRMD
+ERROR 2024-05-09 12:15:11,485 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:11,485 writer No transcript available for ticker: BTAI
+ERROR 2024-05-09 12:15:12,186 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:15:12,186 writer No transcript available for ticker: TPR
+ERROR 2024-05-09 12:16:33,349 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+TypeError: percentile() missing 1 required positional argument: 'self'
+ERROR 2024-05-09 12:16:44,793 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 28, in percentile
+    percentile=ExpressionWrapper(
+NameError: name 'ExpressionWrapper' is not defined
+ERROR 2024-05-09 12:18:24,645 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+TypeError: percentile() missing 1 required positional argument: 'self'
+ERROR 2024-05-09 12:19:36,564 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+TypeError: percentile() missing 1 required positional argument: 'self'
+ERROR 2024-05-09 12:20:04,479 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 27, in percentile
+    queryset = self.get_queryset().annotate(
+AttributeError: type object 'ConferenceCall' has no attribute 'get_queryset'
+ERROR 2024-05-09 12:20:39,568 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 26, in percentile
+    queryset = ConferenceCall.get_queryset().annotate(
+AttributeError: type object 'ConferenceCall' has no attribute 'get_queryset'
+ERROR 2024-05-09 12:24:03,279 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 155, in get
+    calls_with_percentile = ConferenceCall.percentile().filter(ticker=ticker)
+TypeError: percentile() missing 1 required positional argument: 'cls'
+ERROR 2024-05-09 12:25:11,577 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 161, in get
+    'sentiment_category': 'positive' if latest_call.percentile > 0.75 else 'neutral' if latest_call.percentile > 0.25 else 'negative',
+TypeError: '>' not supported between instances of 'method' and 'float'
+ERROR 2024-05-09 12:25:41,378 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:41,378 writer No transcript available for ticker: ATO
+ERROR 2024-05-09 12:25:42,063 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:42,063 writer No transcript available for ticker: GNK
+ERROR 2024-05-09 12:25:42,732 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:42,747 writer No transcript available for ticker: LMB
+ERROR 2024-05-09 12:25:43,426 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:43,432 writer No transcript available for ticker: CBSTF
+ERROR 2024-05-09 12:25:44,096 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:44,096 writer No transcript available for ticker: HHH
+ERROR 2024-05-09 12:25:44,782 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:44,782 writer No transcript available for ticker: MKSI
+ERROR 2024-05-09 12:25:45,483 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:45,483 writer No transcript available for ticker: IVR
+ERROR 2024-05-09 12:25:46,185 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:46,185 writer No transcript available for ticker: CIM
+ERROR 2024-05-09 12:25:46,886 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:46,886 writer No transcript available for ticker: HBI
+ERROR 2024-05-09 12:25:47,556 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:47,556 writer No transcript available for ticker: EPAM
+ERROR 2024-05-09 12:25:48,238 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:48,239 writer No transcript available for ticker: AKBA
+ERROR 2024-05-09 12:25:48,954 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:48,955 writer No transcript available for ticker: CSIQ
+ERROR 2024-05-09 12:25:49,645 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:49,645 writer No transcript available for ticker: CPRX
+ERROR 2024-05-09 12:25:50,331 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:50,331 writer No transcript available for ticker: WRBY
+ERROR 2024-05-09 12:25:51,102 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:51,103 writer No transcript available for ticker: AMLX
+ERROR 2024-05-09 12:25:51,789 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:51,790 writer No transcript available for ticker: VYX
+ERROR 2024-05-09 12:25:52,496 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:52,497 writer No transcript available for ticker: AVXL
+ERROR 2024-05-09 12:25:53,184 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:53,184 writer No transcript available for ticker: MRMD
+ERROR 2024-05-09 12:25:53,877 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:53,878 writer No transcript available for ticker: BTAI
+ERROR 2024-05-09 12:25:54,564 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:25:54,564 writer No transcript available for ticker: TPR
+ERROR 2024-05-09 12:35:44,455 log Internal Server Error: /api/call_detail/AAPL/2023/4/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 176, in get
+    call.sentiment_category = 'positive' if call.percentile > 0.75 else 'neutral' if call.percentile > 0.25 else 'negative'
+TypeError: '>' not supported between instances of 'method' and 'float'
+ERROR 2024-05-09 12:37:23,449 log Internal Server Error: /api/call_detail/AAPL/2023/4/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 182, in get
+    return Response(serializer.data)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 571, in data
+    ret = super().data
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\fields.py", line 962, in to_representation
+    return float(value)
+TypeError: float() argument must be a string or a number, not 'QuerySet'
+ERROR 2024-05-09 12:37:24,355 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:24,355 writer No transcript available for ticker: TCNNF
+ERROR 2024-05-09 12:37:25,489 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:25,489 writer No transcript available for ticker: PFLT
+ERROR 2024-05-09 12:37:26,191 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:26,191 writer No transcript available for ticker: VRNA
+ERROR 2024-05-09 12:37:26,930 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:26,931 writer No transcript available for ticker: RBLX
+ERROR 2024-05-09 12:37:27,640 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:27,640 writer No transcript available for ticker: SPH
+ERROR 2024-05-09 12:37:28,516 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:28,516 writer No transcript available for ticker: UWMC
+ERROR 2024-05-09 12:37:29,196 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:29,196 writer No transcript available for ticker: SOHO
+ERROR 2024-05-09 12:37:29,312 log Internal Server Error: /api/call_detail/AAPL/2023/4/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 182, in get
+    return Response(serializer.data)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 571, in data
+    ret = super().data
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\fields.py", line 962, in to_representation
+    return float(value)
+TypeError: float() argument must be a string or a number, not 'QuerySet'
+ERROR 2024-05-09 12:37:29,929 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:29,929 writer No transcript available for ticker: CARS
+ERROR 2024-05-09 12:37:30,583 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:30,583 writer No transcript available for ticker: HL
+ERROR 2024-05-09 12:37:31,285 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:31,285 writer No transcript available for ticker: OBDC
+ERROR 2024-05-09 12:37:32,002 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:32,002 writer No transcript available for ticker: TFPM
+ERROR 2024-05-09 12:37:32,687 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:32,687 writer No transcript available for ticker: ALGM
+ERROR 2024-05-09 12:37:33,373 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:33,373 writer No transcript available for ticker: GAIN
+ERROR 2024-05-09 12:37:34,089 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:34,090 writer No transcript available for ticker: ILLMF
+ERROR 2024-05-09 12:37:34,772 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:34,772 writer No transcript available for ticker: WBD
+ERROR 2024-05-09 12:37:35,454 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:35,454 writer No transcript available for ticker: VTRS
+ERROR 2024-05-09 12:37:36,140 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:36,140 writer No transcript available for ticker: WBX
+ERROR 2024-05-09 12:37:36,856 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:36,856 writer No transcript available for ticker: TPL
+ERROR 2024-05-09 12:37:37,580 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:37,580 writer No transcript available for ticker: PSEC
+ERROR 2024-05-09 12:37:38,260 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:37:38,260 writer No transcript available for ticker: NTCT
+ERROR 2024-05-09 12:37:51,622 log Internal Server Error: /api/call_detail/AAPL/2023/4/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 182, in get
+    return Response(serializer.data)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 571, in data
+    ret = super().data
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\fields.py", line 962, in to_representation
+    return float(value)
+TypeError: float() argument must be a string or a number, not 'QuerySet'
+ERROR 2024-05-09 12:48:49,622 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:49,622 writer No transcript available for ticker: TCNNF
+ERROR 2024-05-09 12:48:50,323 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:50,323 writer No transcript available for ticker: PFLT
+ERROR 2024-05-09 12:48:51,024 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:51,024 writer No transcript available for ticker: VRNA
+ERROR 2024-05-09 12:48:51,709 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:51,709 writer No transcript available for ticker: RBLX
+ERROR 2024-05-09 12:48:52,426 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:52,426 writer No transcript available for ticker: SPH
+ERROR 2024-05-09 12:48:53,127 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:53,127 writer No transcript available for ticker: UWMC
+ERROR 2024-05-09 12:48:53,843 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:53,843 writer No transcript available for ticker: SOHO
+ERROR 2024-05-09 12:48:54,544 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:54,544 writer No transcript available for ticker: CARS
+ERROR 2024-05-09 12:48:55,229 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:55,229 writer No transcript available for ticker: HL
+ERROR 2024-05-09 12:48:55,883 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:55,883 writer No transcript available for ticker: OBDC
+ERROR 2024-05-09 12:48:57,048 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:57,048 writer No transcript available for ticker: TFPM
+ERROR 2024-05-09 12:48:57,780 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:57,786 writer No transcript available for ticker: ALGM
+ERROR 2024-05-09 12:48:58,465 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:58,465 writer No transcript available for ticker: GAIN
+ERROR 2024-05-09 12:48:59,151 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:59,151 writer No transcript available for ticker: ILLMF
+ERROR 2024-05-09 12:48:59,868 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:48:59,868 writer No transcript available for ticker: WBD
+ERROR 2024-05-09 12:49:00,570 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:49:00,570 writer No transcript available for ticker: VTRS
+ERROR 2024-05-09 12:49:01,287 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:49:01,287 writer No transcript available for ticker: WBX
+ERROR 2024-05-09 12:49:02,040 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:49:02,040 writer No transcript available for ticker: TPL
+ERROR 2024-05-09 12:49:02,726 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:49:02,726 writer No transcript available for ticker: PSEC
+ERROR 2024-05-09 12:49:03,443 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 12:49:03,443 writer No transcript available for ticker: NTCT
+ERROR 2024-05-09 13:35:32,181 add_todays_calls Error adding call for ticker: TCNNF for Q1 2024
+ERROR 2024-05-09 13:35:32,181 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:33,078 add_todays_calls Error adding call for ticker: PFLT for Q2 2024
+ERROR 2024-05-09 13:35:33,078 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:34,125 add_todays_calls Error adding call for ticker: VRNA for Q1 2024
+ERROR 2024-05-09 13:35:34,125 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:35,032 add_todays_calls Error adding call for ticker: RBLX for Q1 2024
+ERROR 2024-05-09 13:35:35,032 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:36,001 add_todays_calls Error adding call for ticker: SPH for Q2 2024
+ERROR 2024-05-09 13:35:36,001 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:36,922 add_todays_calls Error adding call for ticker: UWMC for Q1 2024
+ERROR 2024-05-09 13:35:36,922 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:37,813 add_todays_calls Error adding call for ticker: SOHO for Q1 2024
+ERROR 2024-05-09 13:35:37,813 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:38,938 add_todays_calls Error adding call for ticker: CARS for Q1 2024
+ERROR 2024-05-09 13:35:38,938 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:39,793 add_todays_calls Error adding call for ticker: HL for Q1 2024
+ERROR 2024-05-09 13:35:39,793 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:40,686 add_todays_calls Error adding call for ticker: OBDC for Q1 2024
+ERROR 2024-05-09 13:35:40,686 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:41,797 add_todays_calls Error adding call for ticker: TFPM for Q1 2024
+ERROR 2024-05-09 13:35:41,797 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:42,675 add_todays_calls Error adding call for ticker: ALGM for Q4 2024
+ERROR 2024-05-09 13:35:42,675 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:43,547 add_todays_calls Error adding call for ticker: GAIN for Q4 2024
+ERROR 2024-05-09 13:35:43,547 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:44,425 add_todays_calls Error adding call for ticker: ILLMF for Q1 2024
+ERROR 2024-05-09 13:35:44,425 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:45,574 add_todays_calls Error adding call for ticker: WBD for Q1 2024
+ERROR 2024-05-09 13:35:45,574 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:46,681 add_todays_calls Error adding call for ticker: VTRS for Q1 2024
+ERROR 2024-05-09 13:35:46,681 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:47,557 add_todays_calls Error adding call for ticker: WBX for Q1 2024
+ERROR 2024-05-09 13:35:47,557 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:48,509 add_todays_calls Error adding call for ticker: TPL for Q1 2024
+ERROR 2024-05-09 13:35:48,509 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:49,259 add_todays_calls Error adding call for ticker: PSEC for Q3 2024
+ERROR 2024-05-09 13:35:49,259 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:35:50,165 add_todays_calls Error adding call for ticker: NTCT for Q4 2024
+ERROR 2024-05-09 13:35:50,165 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:47:15,435 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:15,435 writer No transcript available for ticker: ARQ
+ERROR 2024-05-09 13:47:16,123 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:16,123 writer No transcript available for ticker: PAAS
+ERROR 2024-05-09 13:47:16,825 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:16,825 writer No transcript available for ticker: TSEM
+ERROR 2024-05-09 13:47:17,497 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:17,497 writer No transcript available for ticker: RPRX
+ERROR 2024-05-09 13:47:18,231 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:18,231 writer No transcript available for ticker: PTMN
+ERROR 2024-05-09 13:47:18,903 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:18,919 writer No transcript available for ticker: ICL
+ERROR 2024-05-09 13:47:19,590 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:19,590 writer No transcript available for ticker: PLNT
+ERROR 2024-05-09 13:47:20,293 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:20,293 writer No transcript available for ticker: METC
+ERROR 2024-05-09 13:47:20,996 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:20,996 writer No transcript available for ticker: GOCO
+ERROR 2024-05-09 13:47:21,684 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:21,684 writer No transcript available for ticker: SNDL
+ERROR 2024-05-09 13:47:22,340 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:22,340 writer No transcript available for ticker: VSTO
+ERROR 2024-05-09 13:47:23,012 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:23,012 writer No transcript available for ticker: AHH
+ERROR 2024-05-09 13:47:23,700 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:23,700 writer No transcript available for ticker: PLUG
+ERROR 2024-05-09 13:47:24,403 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:24,403 writer No transcript available for ticker: WPRT
+ERROR 2024-05-09 13:47:25,074 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:47:25,074 writer No transcript available for ticker: FSK
+ERROR 2024-05-09 13:47:26,371 add_todays_calls Error adding call for ticker: VTLE for Q1 2024
+ERROR 2024-05-09 13:47:26,371 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:47:27,241 add_todays_calls Error adding call for ticker: DM for Q1 2024
+ERROR 2024-05-09 13:47:27,241 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:47:28,131 add_todays_calls Error adding call for ticker: XERS for Q1 2024
+ERROR 2024-05-09 13:47:28,131 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:47:29,256 add_todays_calls Error adding call for ticker: PLL for Q1 2024
+ERROR 2024-05-09 13:47:29,256 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:47:30,177 add_todays_calls Error adding call for ticker: MPW for Q1 2024
+ERROR 2024-05-09 13:47:30,177 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:58:55,415 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:58:55,415 writer No transcript available for ticker: ARQ
+ERROR 2024-05-09 13:58:56,086 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:58:56,086 writer No transcript available for ticker: PAAS
+ERROR 2024-05-09 13:58:56,758 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:58:56,758 writer No transcript available for ticker: TSEM
+ERROR 2024-05-09 13:58:57,460 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:58:57,460 writer No transcript available for ticker: RPRX
+ERROR 2024-05-09 13:58:58,210 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:58:58,210 writer No transcript available for ticker: PTMN
+ERROR 2024-05-09 13:58:58,898 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:58:58,898 writer No transcript available for ticker: ICL
+ERROR 2024-05-09 13:58:59,616 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:58:59,616 writer No transcript available for ticker: PLNT
+ERROR 2024-05-09 13:59:00,304 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:00,304 writer No transcript available for ticker: METC
+ERROR 2024-05-09 13:59:00,979 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:00,979 writer No transcript available for ticker: GOCO
+ERROR 2024-05-09 13:59:01,729 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:01,729 writer No transcript available for ticker: SNDL
+ERROR 2024-05-09 13:59:02,502 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:02,517 writer No transcript available for ticker: VSTO
+ERROR 2024-05-09 13:59:03,220 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:03,220 writer No transcript available for ticker: AHH
+ERROR 2024-05-09 13:59:03,923 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:03,923 writer No transcript available for ticker: PLUG
+ERROR 2024-05-09 13:59:04,626 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:04,626 writer No transcript available for ticker: WPRT
+ERROR 2024-05-09 13:59:05,329 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 13:59:05,329 writer No transcript available for ticker: FSK
+ERROR 2024-05-09 13:59:06,532 add_todays_calls Error adding call for ticker: VTLE for Q1 2024
+ERROR 2024-05-09 13:59:06,532 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:59:07,401 add_todays_calls Error adding call for ticker: DM for Q1 2024
+ERROR 2024-05-09 13:59:07,401 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:59:08,341 add_todays_calls Error adding call for ticker: XERS for Q1 2024
+ERROR 2024-05-09 13:59:08,341 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:59:09,465 add_todays_calls Error adding call for ticker: PLL for Q1 2024
+ERROR 2024-05-09 13:59:09,465 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 13:59:10,387 add_todays_calls Error adding call for ticker: MPW for Q1 2024
+ERROR 2024-05-09 13:59:10,387 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:02:49,187 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 240, in get
+    calls_not_from_today = ConferenceCall.calls_with_percentile(today=False)
+TypeError: calls_with_percentile() missing 1 required positional argument: 'self'
+ERROR 2024-05-09 14:04:05,245 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 240, in get
+    calls_not_from_today = ConferenceCall.calls_with_percentile(today=False)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 36, in calls_with_percentile
+    percentile=Window(
+NameError: name 'Window' is not defined
+ERROR 2024-05-09 14:04:28,810 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 240, in get
+    calls_not_from_today = ConferenceCall.calls_with_percentile(today=False)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 38, in calls_with_percentile
+    expression=PercentRank(),
+NameError: name 'PercentRank' is not defined
+ERROR 2024-05-09 14:04:41,929 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 240, in get
+    calls_not_from_today = ConferenceCall.calls_with_percentile(today=False)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 48, in calls_with_percentile
+    calls = calls.exclude(date=Date(datetime.now()))
+NameError: name 'Date' is not defined
+ERROR 2024-05-09 14:05:08,892 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 240, in get
+    calls_not_from_today = ConferenceCall.calls_with_percentile(today=False)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 49, in calls_with_percentile
+    calls = calls.exclude(date=Date(datetime.now()))
+NameError: name 'Date' is not defined
+ERROR 2024-05-09 14:05:22,600 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 240, in get
+    calls_not_from_today = ConferenceCall.calls_with_percentile(today=False)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\models.py", line 49, in calls_with_percentile
+    calls = calls.exclude(date=Date(datetime.now()))
+TypeError: an integer is required (got type datetime.datetime)
+ERROR 2024-05-09 14:10:35,633 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:35,633 writer No transcript available for ticker: ARQ
+ERROR 2024-05-09 14:10:36,337 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:36,352 writer No transcript available for ticker: PAAS
+ERROR 2024-05-09 14:10:37,227 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:37,227 writer No transcript available for ticker: TSEM
+ERROR 2024-05-09 14:10:37,946 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:37,946 writer No transcript available for ticker: RPRX
+ERROR 2024-05-09 14:10:38,633 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:38,633 writer No transcript available for ticker: PTMN
+ERROR 2024-05-09 14:10:39,312 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:39,312 writer No transcript available for ticker: ICL
+ERROR 2024-05-09 14:10:40,056 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:40,056 writer No transcript available for ticker: PLNT
+ERROR 2024-05-09 14:10:40,773 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:40,773 writer No transcript available for ticker: METC
+ERROR 2024-05-09 14:10:41,502 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:41,502 writer No transcript available for ticker: GOCO
+ERROR 2024-05-09 14:10:42,303 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:42,303 writer No transcript available for ticker: SNDL
+ERROR 2024-05-09 14:10:43,155 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:43,155 writer No transcript available for ticker: VSTO
+ERROR 2024-05-09 14:10:43,844 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:43,844 writer No transcript available for ticker: AHH
+ERROR 2024-05-09 14:10:44,590 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:44,590 writer No transcript available for ticker: PLUG
+ERROR 2024-05-09 14:10:45,394 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:45,395 writer No transcript available for ticker: WPRT
+ERROR 2024-05-09 14:10:46,065 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:10:46,065 writer No transcript available for ticker: FSK
+ERROR 2024-05-09 14:10:47,283 add_todays_calls Error adding call for ticker: VTLE for Q1 2024
+ERROR 2024-05-09 14:10:47,283 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:10:48,167 add_todays_calls Error adding call for ticker: DM for Q1 2024
+ERROR 2024-05-09 14:10:48,167 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:10:49,073 add_todays_calls Error adding call for ticker: XERS for Q1 2024
+ERROR 2024-05-09 14:10:49,073 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:10:50,166 add_todays_calls Error adding call for ticker: PLL for Q1 2024
+ERROR 2024-05-09 14:10:50,166 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:10:51,047 add_todays_calls Error adding call for ticker: MPW for Q1 2024
+ERROR 2024-05-09 14:10:51,047 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:20:17,225 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 242, in get
+    percentile=Window(
+NameError: name 'Window' is not defined
+ERROR 2024-05-09 14:20:49,958 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: misuse of window function PERCENT_RANK()
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 254, in get
+    paginated_tickers = paginator.paginate_queryset(tickers_before_today, request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\pagination.py", line 655, in paginate_queryset
+    results = list(queryset[offset:offset + self.page_size + 1])
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: misuse of window function PERCENT_RANK()
+ERROR 2024-05-09 14:22:16,205 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:16,205 writer No transcript available for ticker: ARQ
+ERROR 2024-05-09 14:22:16,629 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 272, in get
+    return paginator.get_paginated_response(serializer_before_today.data)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 714, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\fields.py", line 962, in to_representation
+    return float(value)
+TypeError: float() argument must be a string or a number, not 'function'
+ERROR 2024-05-09 14:22:16,879 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:16,879 writer No transcript available for ticker: PAAS
+ERROR 2024-05-09 14:22:17,576 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:17,576 writer No transcript available for ticker: TSEM
+ERROR 2024-05-09 14:22:18,247 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:18,247 writer No transcript available for ticker: RPRX
+ERROR 2024-05-09 14:22:18,950 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:18,950 writer No transcript available for ticker: PTMN
+ERROR 2024-05-09 14:22:19,638 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:19,638 writer No transcript available for ticker: ICL
+ERROR 2024-05-09 14:22:20,325 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:20,325 writer No transcript available for ticker: PLNT
+ERROR 2024-05-09 14:22:21,022 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:21,022 writer No transcript available for ticker: METC
+ERROR 2024-05-09 14:22:21,741 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:21,741 writer No transcript available for ticker: GOCO
+ERROR 2024-05-09 14:22:22,428 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:22,428 writer No transcript available for ticker: SNDL
+ERROR 2024-05-09 14:22:23,134 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:23,134 writer No transcript available for ticker: VSTO
+ERROR 2024-05-09 14:22:23,828 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:23,828 writer No transcript available for ticker: AHH
+ERROR 2024-05-09 14:22:24,513 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:24,513 writer No transcript available for ticker: PLUG
+ERROR 2024-05-09 14:22:25,341 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:25,341 writer No transcript available for ticker: WPRT
+ERROR 2024-05-09 14:22:26,060 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 14:22:26,060 writer No transcript available for ticker: FSK
+ERROR 2024-05-09 14:22:27,341 add_todays_calls Error adding call for ticker: VTLE for Q1 2024
+ERROR 2024-05-09 14:22:27,341 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:22:28,253 add_todays_calls Error adding call for ticker: DM for Q1 2024
+ERROR 2024-05-09 14:22:28,253 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:22:29,206 add_todays_calls Error adding call for ticker: XERS for Q1 2024
+ERROR 2024-05-09 14:22:29,206 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:22:30,313 add_todays_calls Error adding call for ticker: PLL for Q1 2024
+ERROR 2024-05-09 14:22:30,313 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:22:31,223 add_todays_calls Error adding call for ticker: MPW for Q1 2024
+ERROR 2024-05-09 14:22:31,223 add_todays_calls [WinError 3] The system cannot find the path specified: 'D:\\'
+ERROR 2024-05-09 14:23:15,907 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 262, in get
+    ticker_data_before_today = [{'symbol': ticker.symbol,
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 264, in <listcomp>
+    'sentiment_category': ConferenceCall.percentile(ticker.conferencecall_set.order_by('-date')[0])[1] if ticker.conferencecall_set.exists() else None,
+AttributeError: type object 'ConferenceCall' has no attribute 'percentile'
+ERROR 2024-05-09 15:25:57,189 add_todays_calls Error adding call for ticker: SPB for Q2 2024
+ERROR 2024-05-09 15:25:57,189 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:26:30,833 add_todays_calls Error adding call for ticker: ACRE for Q1 2024
+ERROR 2024-05-09 15:26:30,833 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:27:03,085 add_todays_calls Error adding call for ticker: STE for Q4 2024
+ERROR 2024-05-09 15:27:03,085 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:27:49,861 add_todays_calls Error adding call for ticker: RGLD for Q1 2024
+ERROR 2024-05-09 15:27:49,861 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:28:51,845 add_todays_calls Error adding call for ticker: PGY for Q1 2024
+ERROR 2024-05-09 15:28:51,845 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:30:04,973 add_todays_calls Error adding call for ticker: RC for Q1 2024
+ERROR 2024-05-09 15:30:04,973 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:30:55,552 add_todays_calls Error adding call for ticker: JXN for Q1 2024
+ERROR 2024-05-09 15:30:55,552 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:31:31,961 add_todays_calls Error adding call for ticker: PNNT for Q2 2024
+ERROR 2024-05-09 15:31:31,961 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:31:53,750 add_todays_calls Error adding call for ticker: ATUSF for Q1 2024
+ERROR 2024-05-09 15:31:53,750 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:32:53,966 add_todays_calls Error adding call for ticker: PZZA for Q1 2024
+ERROR 2024-05-09 15:32:53,966 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:34:07,266 add_todays_calls Error adding call for ticker: CXW for Q1 2024
+ERROR 2024-05-09 15:34:07,266 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:34:39,595 add_todays_calls Error adding call for ticker: NVMI for Q1 2024
+ERROR 2024-05-09 15:34:39,595 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:35:40,540 add_todays_calls Error adding call for ticker: BERY for Q2 2024
+ERROR 2024-05-09 15:35:40,540 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:37:05,298 add_todays_calls Error adding call for ticker: BIGC for Q1 2024
+ERROR 2024-05-09 15:37:05,298 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:37:56,449 add_todays_calls Error adding call for ticker: MMS for Q2 2024
+ERROR 2024-05-09 15:37:56,449 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:38:39,241 add_todays_calls Error adding call for ticker: OR for Q1 2024
+ERROR 2024-05-09 15:38:39,241 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:39:18,914 add_todays_calls Error adding call for ticker: MRSN for Q1 2024
+ERROR 2024-05-09 15:39:18,914 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:40:28,597 add_todays_calls Error adding call for ticker: STNG for Q1 2024
+ERROR 2024-05-09 15:40:28,597 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:41:20,072 log Internal Server Error: /api/prior_ticker_list/
+Traceback (most recent call last):
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\kooch\PycharmProjects\confai\.venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\kooch\PycharmProjects\confai\confai\views.py", line 261, in get
+    percentile_rank = ConferenceCall.objects.all().get_percentile_rank(weighted_average_sentiment)
+AttributeError: 'QuerySet' object has no attribute 'get_percentile_rank'
+ERROR 2024-05-09 15:41:57,600 add_todays_calls Error adding call for ticker: USFD for Q1 2024
+ERROR 2024-05-09 15:41:57,600 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:42:37,510 add_todays_calls Error adding call for ticker: SLRC for Q1 2024
+ERROR 2024-05-09 15:42:37,510 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:54:02,001 fetch_symbols Failed to add symbol for title: GlycoMimetics, Inc. (GLYC) Corporate Update Call Transcript
+ERROR 2024-05-09 15:54:02,894 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:02,894 writer No transcript available for ticker: FOUR
+ERROR 2024-05-09 15:54:03,566 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:03,566 writer No transcript available for ticker: TSE
+ERROR 2024-05-09 15:54:04,254 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:04,254 writer No transcript available for ticker: ARHS
+ERROR 2024-05-09 15:54:04,957 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:04,957 writer No transcript available for ticker: MUX
+ERROR 2024-05-09 15:54:05,631 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:05,631 writer No transcript available for ticker: RDW
+ERROR 2024-05-09 15:54:06,318 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:06,318 writer No transcript available for ticker: TORXF
+ERROR 2024-05-09 15:54:07,013 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:07,013 writer No transcript available for ticker: ORA
+ERROR 2024-05-09 15:54:07,716 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:07,716 writer No transcript available for ticker: EQX
+ERROR 2024-05-09 15:54:08,436 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:08,436 writer No transcript available for ticker: CE
+ERROR 2024-05-09 15:54:09,115 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:09,115 writer No transcript available for ticker: EXK
+ERROR 2024-05-09 15:54:09,800 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:09,800 writer No transcript available for ticker: VTNR
+ERROR 2024-05-09 15:54:10,490 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:10,490 writer No transcript available for ticker: FOLD
+ERROR 2024-05-09 15:54:11,224 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:11,224 writer No transcript available for ticker: UTL
+ERROR 2024-05-09 15:54:11,927 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:11,927 writer No transcript available for ticker: CTRRF
+ERROR 2024-05-09 15:54:12,645 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 15:54:12,645 writer No transcript available for ticker: SNEX
+ERROR 2024-05-09 15:55:14,676 add_todays_calls Error adding call for ticker: ZD for Q1 2024
+ERROR 2024-05-09 15:55:14,676 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:55:58,552 add_todays_calls Error adding call for ticker: KW for Q1 2024
+ERROR 2024-05-09 15:55:58,552 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:56:48,847 add_todays_calls Error adding call for ticker: ENLAY for Q1 2024
+ERROR 2024-05-09 15:56:48,847 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 15:58:05,090 add_todays_calls Error adding call for ticker: YETI for Q1 2024
+ERROR 2024-05-09 15:58:05,091 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 16:09:29,535 fetch_symbols Failed to add symbol for title: GlycoMimetics, Inc. (GLYC) Corporate Update Call Transcript
+ERROR 2024-05-09 16:09:30,441 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:30,457 writer No transcript available for ticker: FOUR
+ERROR 2024-05-09 16:09:31,144 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:31,144 writer No transcript available for ticker: TSE
+ERROR 2024-05-09 16:09:31,816 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:31,816 writer No transcript available for ticker: ARHS
+ERROR 2024-05-09 16:09:32,534 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:32,534 writer No transcript available for ticker: MUX
+ERROR 2024-05-09 16:09:33,206 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:33,206 writer No transcript available for ticker: RDW
+ERROR 2024-05-09 16:09:33,893 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:33,893 writer No transcript available for ticker: TORXF
+ERROR 2024-05-09 16:09:34,581 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:34,581 writer No transcript available for ticker: ORA
+ERROR 2024-05-09 16:09:35,487 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:35,487 writer No transcript available for ticker: EQX
+ERROR 2024-05-09 16:09:36,190 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:36,190 writer No transcript available for ticker: CE
+ERROR 2024-05-09 16:09:36,893 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:36,893 writer No transcript available for ticker: EXK
+ERROR 2024-05-09 16:09:37,585 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:37,585 writer No transcript available for ticker: VTNR
+ERROR 2024-05-09 16:09:38,287 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:38,287 writer No transcript available for ticker: FOLD
+ERROR 2024-05-09 16:09:39,006 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:39,006 writer No transcript available for ticker: UTL
+ERROR 2024-05-09 16:09:39,710 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:39,710 writer No transcript available for ticker: CTRRF
+ERROR 2024-05-09 16:09:40,397 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 16:09:40,397 writer No transcript available for ticker: SNEX
+ERROR 2024-05-09 20:16:33,406 add_todays_calls Error adding call for ticker: ZD for Q1 2024
+ERROR 2024-05-09 20:16:33,406 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 20:17:19,735 add_todays_calls Error adding call for ticker: KW for Q1 2024
+ERROR 2024-05-09 20:17:19,735 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 20:17:58,765 add_todays_calls Error adding call for ticker: ENLAY for Q1 2024
+ERROR 2024-05-09 20:17:58,765 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 20:19:10,960 add_todays_calls Error adding call for ticker: YETI for Q1 2024
+ERROR 2024-05-09 20:19:10,960 add_todays_calls unknown function: JSON_VALID()
+ERROR 2024-05-09 20:30:36,388 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:36,388 writer No transcript available for ticker: ACHV
+ERROR 2024-05-09 20:30:37,211 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:37,214 writer No transcript available for ticker: CAMT
+ERROR 2024-05-09 20:30:38,028 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:38,028 writer No transcript available for ticker: MVIS
+ERROR 2024-05-09 20:30:38,835 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:38,852 writer No transcript available for ticker: AKAM
+ERROR 2024-05-09 20:30:39,665 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:39,665 writer No transcript available for ticker: GRPN
+ERROR 2024-05-09 20:30:40,489 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:40,489 writer No transcript available for ticker: AMTX
+ERROR 2024-05-09 20:30:41,301 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:41,301 writer No transcript available for ticker: MTNB
+ERROR 2024-05-09 20:30:42,119 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:42,119 writer No transcript available for ticker: MEG
+ERROR 2024-05-09 20:30:42,947 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:42,948 writer No transcript available for ticker: INSG
+ERROR 2024-05-09 20:30:43,780 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:43,780 writer No transcript available for ticker: TSNDF
+ERROR 2024-05-09 20:30:44,577 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:44,577 writer No transcript available for ticker: OUST
+ERROR 2024-05-09 20:30:45,399 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:45,399 writer No transcript available for ticker: COLL
+ERROR 2024-05-09 20:30:46,222 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:46,223 writer No transcript available for ticker: OTCM
+ERROR 2024-05-09 20:30:47,046 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:47,047 writer No transcript available for ticker: LPTH
+ERROR 2024-05-09 20:30:47,862 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:47,863 writer No transcript available for ticker: VUZI
+ERROR 2024-05-09 20:30:48,680 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:48,680 writer No transcript available for ticker: SGMO
+ERROR 2024-05-09 20:30:49,500 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:49,501 writer No transcript available for ticker: SKSBF
+ERROR 2024-05-09 20:30:50,317 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:50,317 writer No transcript available for ticker: GEN
+ERROR 2024-05-09 20:30:51,136 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:51,138 writer No transcript available for ticker: ONCT
+ERROR 2024-05-09 20:30:51,979 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:30:51,981 writer No transcript available for ticker: RBA
+ERROR 2024-05-09 20:41:21,323 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:21,323 writer No transcript available for ticker: ACHV
+ERROR 2024-05-09 20:41:22,017 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:22,018 writer No transcript available for ticker: CAMT
+ERROR 2024-05-09 20:41:22,707 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:22,708 writer No transcript available for ticker: MVIS
+ERROR 2024-05-09 20:41:23,395 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:23,396 writer No transcript available for ticker: AKAM
+ERROR 2024-05-09 20:41:24,085 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:24,085 writer No transcript available for ticker: GRPN
+ERROR 2024-05-09 20:41:24,765 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:24,765 writer No transcript available for ticker: AMTX
+ERROR 2024-05-09 20:41:25,437 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:25,438 writer No transcript available for ticker: MTNB
+ERROR 2024-05-09 20:41:26,155 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:26,155 writer No transcript available for ticker: MEG
+ERROR 2024-05-09 20:41:26,863 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:26,867 writer No transcript available for ticker: INSG
+ERROR 2024-05-09 20:41:27,571 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:27,572 writer No transcript available for ticker: TSNDF
+ERROR 2024-05-09 20:41:28,242 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:28,244 writer No transcript available for ticker: OUST
+ERROR 2024-05-09 20:41:28,918 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:28,918 writer No transcript available for ticker: COLL
+ERROR 2024-05-09 20:41:29,598 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:29,605 writer No transcript available for ticker: OTCM
+ERROR 2024-05-09 20:41:30,425 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:30,425 writer No transcript available for ticker: LPTH
+ERROR 2024-05-09 20:41:31,245 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:31,245 writer No transcript available for ticker: VUZI
+ERROR 2024-05-09 20:41:32,060 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:32,060 writer No transcript available for ticker: SGMO
+ERROR 2024-05-09 20:41:32,764 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:32,766 writer No transcript available for ticker: SKSBF
+ERROR 2024-05-09 20:41:33,495 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:33,495 writer No transcript available for ticker: GEN
+ERROR 2024-05-09 20:41:34,318 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:34,326 writer No transcript available for ticker: ONCT
+ERROR 2024-05-09 20:41:35,135 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
+ERROR 2024-05-09 20:41:35,135 writer No transcript available for ticker: RBA
