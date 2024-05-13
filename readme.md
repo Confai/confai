@@ -8,7 +8,7 @@ Scrape, Analyze, and Serve Earnings Call Transcripts with sentiment analysis and
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.8
 - pip
 - conda
 - Django
