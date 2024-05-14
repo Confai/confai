@@ -5,3 +5,4 @@ confalysis.py
 display_calls.py
 db.json
 db.sqlite3
+logs/

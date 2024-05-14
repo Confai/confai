@@ -1609,3 +1609,5 @@ ERROR 2024-05-09 20:41:34,318 dcf No transcript available for the given paramete
 ERROR 2024-05-09 20:41:34,326 writer No transcript available for ticker: ONCT
 ERROR 2024-05-09 20:41:35,135 dcf No transcript available for the given parameters: {ticker}, {quarter}, {year}
 ERROR 2024-05-09 20:41:35,135 writer No transcript available for ticker: RBA
+ERROR 2024-05-13 22:05:55,044 load_analysis Error adding call for ticker: SAP for Q3 2023
+ERROR 2024-05-13 22:05:55,054 load_analysis unknown function: JSON_VALID()

@@ -3105,3 +3105,19 @@ WARNING 2024-05-10 09:20:00,180 log Not Found: /favicon.ico
 WARNING 2024-05-11 17:25:12,554 log Not Found: /favicon.ico
 INFO 2024-05-11 17:27:10,188 dcf Sending request to http://discountingcashflows.com/api/news/AAPL/5
 INFO 2024-05-11 17:27:11,257 dcf Received response: 200
+INFO 2024-05-13 22:03:49,776 autoreload Watching for file changes with StatReloader
+WARNING 2024-05-13 22:04:01,270 log Not Found: /favicon.ico
+INFO 2024-05-13 22:04:56,506 dcf Sending request to http://discountingcashflows.com/api/transcript/SAP/3/2023/
+INFO 2024-05-13 22:04:57,608 dcf Received response: 200
+INFO 2024-05-13 22:05:54,598 dictionary adding document #0 to Dictionary(0 unique tokens: [])
+INFO 2024-05-13 22:05:54,606 dictionary built Dictionary(1042 unique tokens: ['gentlemen', 'stand', 'thank', 'confer', 'earn']...) from 576 documents (total 3900 corpus positions)
+INFO 2024-05-13 22:05:54,610 summarizer Building graph
+INFO 2024-05-13 22:05:54,610 summarizer Filling graph
+INFO 2024-05-13 22:05:54,972 summarizer Removing unreachable nodes of graph
+INFO 2024-05-13 22:05:54,973 summarizer Pagerank graph
+INFO 2024-05-13 22:05:55,037 summarizer Sorting pagerank scores
+ERROR 2024-05-13 22:05:55,044 load_analysis Error adding call for ticker: SAP for Q3 2023
+ERROR 2024-05-13 22:05:55,054 load_analysis unknown function: JSON_VALID()
+INFO 2024-05-13 22:05:55,054 load_analysis Processed 1 of 7216 tickers.
+INFO 2024-05-13 22:05:55,057 dcf Sending request to http://discountingcashflows.com/api/transcript/CDNS/3/2023/
+INFO 2024-05-13 22:05:56,024 dcf Received response: 200
