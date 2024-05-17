@@ -13,6 +13,7 @@ Scrape, Analyze, and Serve Earnings Call Transcripts with sentiment analysis and
 - conda
 - Django
 
+
 ### Installation
 
 1. Clone the repository:
