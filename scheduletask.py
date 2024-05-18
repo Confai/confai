@@ -5,7 +5,7 @@ import time
 from datetime import datetime
 import logging
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 django.setup()
 
 logger = logging.getLogger(__name__)
