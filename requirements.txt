@@ -8,3 +8,6 @@ schedule==1.2.1
 torch==2.2.2
 transformers==4.39.3
 yfinance==0.2.37
+psycopg2
+celery 
+redis
