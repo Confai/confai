@@ -7,7 +7,10 @@ export LANG=C.UTF-8
 gunicorn --bind=0.0.0.0 --timeout 600 core.wsgi
 
 # Start Celery worker
-celery -A core worker -l INFO 
+celery -A core worker -l INFO &
 
 # Start Celery beat scheduler
-celery -A core beat -l INFO
+celery -A core beat -l INFO &
+
+# Update Database
+python scheduletask.py
