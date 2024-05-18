@@ -13,4 +13,4 @@ celery -A core worker -l INFO &
 celery -A core beat -l INFO &
 
 # Update Database
-python scheduletask.py
+python scheduletask.py &
