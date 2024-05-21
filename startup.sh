@@ -4,7 +4,7 @@
 export LANG=C.UTF-8
 
 # Start Gunicorn in the background
-gunicorn --bind=0.0.0.0 --timeout 600 core.wsgi
+gunicorn --bind=0.0.0.0 --timeout 600 core.wsgi &
 
 # Start Celery worker in the background
 celery -A core worker -l INFO &
