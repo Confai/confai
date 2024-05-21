@@ -11,3 +11,4 @@ yfinance==0.2.37
 psycopg2
 celery 
 redis
+supervisor
