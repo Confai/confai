@@ -12,10 +12,13 @@ logger = logging.getLogger(__name__)
 
 def job():
     logger.info("Job Started: Running the 'add_todays_calls' command.")
-    from confai.management.commands.add_todays_calls import Command
-    command = Command()
-    command.handle()
-    logger.info("Job Finished: The 'add_todays_calls' command has been executed.")
+    try:
+        from confai.management.commands.add_todays_calls import Command
+        command = Command()
+        command.handle()
+        logger.info("Job Finished: The 'add_todays_calls' command has been executed.")
+    except Exception as e:
+        logger.error(f"Error occurred while running the 'add_todays_calls' command: {str(e)}", exc_info=True)
 
 logger.info("Scheduling the job to run every 10 minutes.")
 schedule.every(10).minutes.do(job)
