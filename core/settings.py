@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'confai',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +47,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -181,3 +183,5 @@ LOGGING = {
         'level': 'INFO',
     },
 }
+
+CORS_ORIGIN_ALLOW_ALL = True

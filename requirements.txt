@@ -12,3 +12,5 @@ psycopg2
 celery 
 redis
 supervisor
+django-cors-headers
+
