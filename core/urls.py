@@ -3,6 +3,8 @@ from confai import views
 from django.contrib import admin
 from confai.views import TickerListAPIView, CallDetailAPIView, SymbolAPIView, AllCallsAPIView, PriorTickerListAPIView
 from rest_framework.authtoken import views as rest_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,4 +17,4 @@ urlpatterns = [
     path('api/prior_ticker_list/', PriorTickerListAPIView.as_view(), name='api_prior_ticker_list'),
     path('api/all_calls/', AllCallsAPIView.as_view(), name='api_all_calls'),
     path('api-token-auth/', rest_views.obtain_auth_token, name='api_token_auth')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
